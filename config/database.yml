@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: <%= Rails.application.credentials.database[:db_user] %>
+  password: <%= Rails.application.credentials.database[:db_pass] %>
+
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  host: <%= Rails.application.credentials.database[:db_host] %>
+  database: <%= Rails.application.credentials.database[:db_name] %>
+test:
+  <<: *default
+  host: <%= Rails.application.credentials.database[:db_host] %>
+  database: clTemplate_test
+
+production:
+  <<: *default
+  database: clTemplate_production
+  username: clTemplate
+  password: <%= ENV["CLTEMPLATE_DATABASE_PASSWORD"] %>
