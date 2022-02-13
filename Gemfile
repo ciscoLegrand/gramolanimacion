@@ -76,7 +76,6 @@ end
 
 
 # add cutom development gems
-
 gem 'letter_opener', group: :development
 gem 'bullet', group: :development
 gem "rspec-rails", group: [:development, :test]

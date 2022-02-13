@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+
+
+ main.container {
+   margin-top: 50px;
+   min-height: calc(100vh - 310px);
+ }
