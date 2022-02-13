@@ -73,3 +73,20 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+
+# add cutom development gems
+
+gem 'letter_opener', group: :development
+gem 'bullet', group: :development
+gem "rspec-rails", group: [:development, :test]
+gem "factory_bot_rails", group: [:development,  :test]
+gem "faker", group: [:development, :test]
+
+# add custom production gems
+gem 'pg_search'
+gem 'view_components'
+gem 'breadcrumbs_on_rails'
+gem 'inline_svg'
+gem 'pagy'
+gem 'friendly_id'
