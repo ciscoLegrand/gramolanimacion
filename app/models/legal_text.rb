@@ -1,0 +1,2 @@
+class LegalText < ApplicationRecord
+end
