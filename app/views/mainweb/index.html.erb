@@ -1,4 +1,10 @@
-<div>
-  <h1 class="font-bold text-4xl">Mainweb#index</h1>
-  <p>Find me in app/views/mainweb/index.html.erb</p>
+<div class="flex flex-col mx-auto">
+  <div>
+    <h1 class="font-bold text-4xl mx-auto">clTemplate</h1>
+    
+  </div>
+
+  <% 40.times do %>
+    <p><%= Faker::Movies::Lebowski.quote %></p>
+  <% end %>
 </div>
