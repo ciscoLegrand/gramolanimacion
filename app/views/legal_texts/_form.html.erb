@@ -1,0 +1,30 @@
+<div class="block p-6 rounded-lg shadow-lg bg-white">
+  <%= form_with(model: @legal_text,local: true, data: {turbo: false} ) do |f| %>
+    <!-- render rails error form  --->
+    <% if @legal_text.errors.any? %>
+    <div class="bg-red-100 border-t border-b border-red-500 text-red-700 px-4 py-3" role="alert">
+      <p class="font-bold"><%= t 'activerecord.errors.template.body' %></p>
+    </div>
+      <div id="error_explanation">
+        <% @legal_text.errors.messages.values.flatten.each do |msg| %>
+          <div class="flex items-center bg-red-100 text-red-700 text-sm font-bold px-4 py-3" role="alert">
+            <%= inline_svg_tag('icons/ico-exclamation-triangle.svg', class: 'fill-current w-4 h-4 mr-2 text-red-700')%>
+            <p><%= msg %></p>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+
+
+    <div class="form-group mb-6">
+      <%= f.label :title, class: 'label' %>
+      <%= f.text_field :title, class: 'textfield' %>
+    </div>
+    <div class="form-group mb-6">
+        <%= f.label :content, class: 'label' %>          
+        <%= f.rich_text_area :content %>
+    </div>
+    <%= f.submit nil, class: 'button-primary' %>
+  <% end %>
+</div>
