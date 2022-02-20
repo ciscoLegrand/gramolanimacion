@@ -87,7 +87,7 @@ RSpec.describe "LegalTexts", type: :request do
 
       it "updates the requested legaltext" do
         legaltext = LegalText.create! valid_attributes
-        patch legal_text_url(legaltext), params: { legaltext: new_attributes }
+        patch legal_text_url(legaltext), params: { legal_text: new_attributes }
         legaltext.reload
 
         # expect(legaltext.title).to eq('NEW FANCY TITLE')
@@ -95,7 +95,7 @@ RSpec.describe "LegalTexts", type: :request do
 
       it "redirects to the legaltext" do
         legaltext = LegalText.create! valid_attributes
-        patch legal_text_url(legaltext), params: { legaltext: new_attributes }
+        patch legal_text_url(legaltext), params: { legal_text: new_attributes }
         legaltext.reload
         expect(response).to redirect_to(legal_text_url(legaltext))
       end
@@ -104,7 +104,7 @@ RSpec.describe "LegalTexts", type: :request do
     context "with invalid parameters" do
       it "renders a successful response (i.e. to display the 'edit' template)" do
         legaltext = LegalText.create! valid_attributes
-        patch legal_text_url(legaltext), params: { legaltext: invalid_attributes }
+        patch legal_text_url(legaltext), params: { legal_text: invalid_attributes }
         expect(response).to be_successful
       end
     end

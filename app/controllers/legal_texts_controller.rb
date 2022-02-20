@@ -25,6 +25,11 @@ class LegalTextsController < ApplicationController
   end
 
   def update
+    if @legal_text.update(legal_text_params)
+      redirect_to @legal_text, notice: 'Legal text was successfully updated.'
+    else
+      render :edit
+    end
   end
 
   def destroy
