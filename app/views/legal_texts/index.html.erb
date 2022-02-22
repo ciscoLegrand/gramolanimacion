@@ -1,8 +1,14 @@
-<div class="flex flex-col">
-  <% @legal_texts.each do |text| %>
-    <div class="flex-1">
-      <%= link_to text.title, text %>
-    </div> 
+<%= link_to 'new', new_legal_text_path,class: 'button-primary w-20' %>
+<%= render TableComponent.new(headers: @headers) do |table| %>
+  <%= @legal_texts.each do |legaltext|%>
+    <%= table.row(cells: object_to_table_cells(legaltext, @attrs)) do  |row| %>
+      <% row.actions do %>
+        <div class="flex flex-row justify-between">
+          <%= link_to 'show', legaltext, class: 'button-primary' %>
+          <%= link_to 'edit', edit_legal_text_path(legaltext),class: 'button-primary' %>
+          <%= button_to 'delete', legaltext, method: :delete, class: 'button-primary' %>
+        </div>
+      <% end %>
+    <% end %>
   <% end %>
-</div>
-
+<% end %>

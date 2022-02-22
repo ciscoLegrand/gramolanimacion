@@ -3,6 +3,8 @@ class LegalTextsController < ApplicationController
 
   def index
     @legal_texts = LegalText.all
+    @headers = ['Title',  '', 'Actions']
+    @attrs =  [:title]
   end
 
   def show
