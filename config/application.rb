@@ -17,7 +17,7 @@ module ClTemplate
     # in config/environments, which are processed later.
     #
     # config.eager_load_paths << Rails.root.join("extras")
-
+    config.exceptions_app = self.routes
     
     config.time_zone = "Europe/Madrid"
     
