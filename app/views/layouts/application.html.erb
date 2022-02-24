@@ -21,5 +21,6 @@
     <% if cookies[:allow_cookies].blank? %>
       <%= render 'layouts/partials/cookies_bar'%>
     <% end %>
+    <%= turbo_frame_tag 'modal' %>
   </body>
 </html>
