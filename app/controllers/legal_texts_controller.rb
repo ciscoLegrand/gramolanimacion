@@ -22,10 +22,10 @@ class LegalTextsController < ApplicationController
     if @legal_text.save
       respond_to do |format|
         format.turbo_stream { render turbo_stream: turbo_stream.prepend('legal_text', partial: 'legal_texts/legal_text', locals: {legal_text: @legal_text}) }
-        format.html { redirect_to legal_texts_path, notice: "legal_text was successfully created." }
+        format.html { redirect_to legal_texts_path, success: "legal_text was successfully created." }
       end
     else
-      redirect_to legal_texts_path, notice: "legal_text was not successfully created."
+      redirect_to legal_texts_path, alert: "legal_text was not successfully created."
     end
   end
 
@@ -33,10 +33,10 @@ class LegalTextsController < ApplicationController
     if @legal_text.update(legal_text_params)
       respond_to do |format|
         format.turbo_stream { render turbo_stream: turbo_stream.replace(@legal_text, partial: "legal_texts/legal_text", locals: {legal_text: @legal_text}) }
-        format.html { redirect_to legal_texts_path, notice: "#{@legal_text.title} was successfully updated." }
+        format.html { redirect_to legal_texts_path, success: "#{@legal_text.title} was successfully updated." }
       end
     else
-      redirect_to legal_texts_path, notice: "#{@legal_text.title} was not successfully updated."
+      redirect_to legal_texts_path, alert: "#{@legal_text.title} was not successfully updated."
     end
   end
 
