@@ -14,6 +14,7 @@
   <body>
     <%= render 'layouts/partials/navigation' %>
     <main class="container mx-auto px-5 flex flex-col">
+      <%= turbo_frame_tag 'modal' %>  
       <%= yield %>
     </main>
     <%= render 'layouts/partials/footer' %>
@@ -21,6 +22,5 @@
     <% if cookies[:allow_cookies].blank? %>
       <%= render 'layouts/partials/cookies_bar'%>
     <% end %>
-    <%= turbo_frame_tag 'modal' %>
   </body>
 </html>

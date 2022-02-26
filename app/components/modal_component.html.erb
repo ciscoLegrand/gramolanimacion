@@ -1,6 +1,8 @@
-<!--TODO: move modal to view component (better way) or instead to a partial (worst way) -->
 <%= turbo_frame_tag 'modal' do %>
-  <div class="modal invisible" data-controller="modal" data-launch-modal-target="modal">
+  <div class="modal"  data-launch-modal-target="modal" 
+                      data-controller="modal" 
+                      data-action="turbo:submit-end->modal#submitEnd keyup@window->modal#closeWithKeyboard click@window->modal#closeBackground">
+
     <div class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
       <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
         <!--
@@ -28,9 +30,9 @@
             From: "opacity-100 translate-y-0 sm:scale-100"
             To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
         -->
-        <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full border-t-8 border-pink-400">
+        <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-4xl sm:w-full border-t-8 border-indigo-400">
           <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4 ">
-            <div class="sm:flex sm:items-start">
+            <div class="sm:flex sm:items-start justify-center">
               <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                 <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title"><%= title %></h3>
                 <hr>
@@ -39,8 +41,7 @@
             </div>
           </div>
           <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row justify-center">
-            <button type="button" data-action="modal#close" class="button-primary mr-4">Accept</button>
-            <button type="button" data-action="modal#close" class="button-decline ml-4">Decline</button>
+            <%= button_tag "Cancelar", data: {action: "modal#hideModal" }, type: 'button', class: 'button-decline mr-4' %>
           </div>
         </div>
       </div>
