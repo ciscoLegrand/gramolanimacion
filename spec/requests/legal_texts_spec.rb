@@ -59,7 +59,7 @@ RSpec.describe "LegalTexts", type: :request do
 
       it "redirects to the created legal text" do
         post legal_texts_url, params: { legal_text: valid_attributes }
-        expect(response).to redirect_to(legal_text_url(LegalText.last))
+        expect(response).to redirect_to(legal_texts_url)
       end
     end
 
@@ -72,7 +72,7 @@ RSpec.describe "LegalTexts", type: :request do
 
       it "renders a successful response (i.e. to display the 'new' template)" do
         post legal_texts_url, params: { legal_text: invalid_attributes }
-        expect(response).to be_successful
+        expect(response).to redirect_to(legal_texts_url)
       end
     end
   end
@@ -93,11 +93,11 @@ RSpec.describe "LegalTexts", type: :request do
         # expect(legaltext.title).to eq('NEW FANCY TITLE')
       end
 
-      it "redirects to the legaltext" do
+      it "redirects to the legal texts list" do
         legaltext = LegalText.create! valid_attributes
         patch legal_text_url(legaltext), params: { legal_text: new_attributes }
         legaltext.reload
-        expect(response).to redirect_to(legal_text_url(legaltext))
+        expect(response).to redirect_to(legal_texts_url)
       end
     end
 
@@ -105,7 +105,7 @@ RSpec.describe "LegalTexts", type: :request do
       it "renders a successful response (i.e. to display the 'edit' template)" do
         legaltext = LegalText.create! valid_attributes
         patch legal_text_url(legaltext), params: { legal_text: invalid_attributes }
-        expect(response).to be_successful
+        expect(response).to redirect_to(legal_texts_url)
       end
     end
   end
