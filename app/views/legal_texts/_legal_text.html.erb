@@ -1,0 +1,15 @@
+<%= turbo_frame_tag legal_text do %>
+  <div class="flex justify-between items-center">
+    <div class="my-5">
+      <strong class="block font-medium mb-1">Title:</strong>
+      <%= legal_text.title %>
+    </div>
+
+    <% if action_name != "show" %>
+      <%= link_to "Show", legal_text,data: { turbo_frame: 'modal' }, class: "button-primary mr-4" %>
+      <%= link_to 'Edit', edit_legal_text_path(legal_text), data: { turbo_frame: 'modal' }, class: "button-primary mr-4" %>
+      <%= button_to 'Delete', legal_text_path(legal_text), method: :delete, class: 'button-decline mr-4' %>
+      <hr class="mt-6">
+    <% end %>
+  </div>
+<% end %>
