@@ -75,7 +75,7 @@ group :test do
 end
 
 
-# add cutom development gems
+# add custom development gems
 gem 'letter_opener', group: :development
 gem 'bullet', group: :development
 gem "rspec-rails", group: [:development, :test]
@@ -84,8 +84,9 @@ gem "faker", group: [:development, :test]
 
 # add custom production gems
 gem 'pg_search'
-gem 'view_components'
+gem 'view_component'
 gem 'breadcrumbs_on_rails'
 gem 'inline_svg'
 gem 'pagy'
 gem 'friendly_id'
+gem 'rename'
