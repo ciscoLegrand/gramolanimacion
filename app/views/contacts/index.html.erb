@@ -1,0 +1,15 @@
+
+<% if @contacts.present? %>
+  <%= render TableComponent.new(headers: @headers) do |table| %>
+    <%= @contacts.each do |contact| %>
+      <%= table.row(cells: object_to_table_cells(contact, @attrs)) do  |row| %>
+        <% row.actions do %>
+          <div class="flex flex-row justify-between">
+            <%= link_to 'show', contact, class: 'button-primary' %>
+            <%= button_to 'delete', contact, method: :delete, class: 'button-primary' %>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

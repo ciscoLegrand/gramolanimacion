@@ -1,6 +1,5 @@
-<div class="flex flex-col mx-auto">
-  <h1 class="my-4 text-xl lg:text-4xl font-black">clTemplate</h1>
-  <% 40.times do %>
-    <p><%= Faker::Movies::Lebowski.quote %></p>
-  <% end %>
-</div>
+  <div class="flex flex-col w-full">
+    <h1 class="font-bold text-4xl flex justify-center"> contacto</h1>
+    <%= render 'contacts/form', contact: @contact %>
+  </div>
+
