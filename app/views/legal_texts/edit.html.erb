@@ -1,4 +1,4 @@
-<div class="flex flex-col w-full">
-  <h1 class="font-bold text-4xl flex justify-center"> <%= t '.title' %></h1>
+ 
+<%= render ModalComponent.new(title: "Editar #{@legal_text.title}") do %>
   <%= render 'form', legal_text: @legal_text %>
-</div>
+<% end %>
