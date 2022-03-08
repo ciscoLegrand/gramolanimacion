@@ -25,7 +25,7 @@ module Gramolaanimacion
     config.i18n.default_locale = :es
     config.i18n.fallbacks = true
     
-    Faker::Config.locale = 'es'
+    # Faker::Config.locale = 'es'
 
     config.generators do |g|
       g.assets            false
