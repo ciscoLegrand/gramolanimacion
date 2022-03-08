@@ -4,8 +4,8 @@ class ContactMailer < ApplicationMailer
   def contact_form(contact)
     @correo = contact
     # raise @correo.to_json
-    @greeting = "hola #{@correo.name}"
+    @greeting = "consulta de #{@correo.name}"
     # =>  destinatario del correo  , quien envia el correo
-    mail( to: @correo.email,from: 'cisco.glez@gmail.com', subject: @greeting)
+    mail( to: 'cisco.glez@gmail.com' ,from: @correo.email, subject: @greeting)
   end
 end
