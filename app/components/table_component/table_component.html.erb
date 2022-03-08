@@ -1,0 +1,24 @@
+<div class="w-full flex flex-row justify-center  ">
+  <div class="overflow-x-auto sm:-mx-6 lg:-mx-8 w-full">
+    <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+      <div class="overflow-x-auto">
+        <table class="min-w-full">
+          <thead class="border-b bg-gray-800">
+            <% headers.each do |header| %>
+              <th scope="col" class="text-xl font-medium text-white px-6 py-4 text-left">
+                <%= header %>
+              </th>
+            <% end %>
+          </thead>
+          <tbody>
+            <% rows.each_with_index do |row, idx| %>
+              <tr class="border-b <%= idx.odd? ? 'bg-gray-200' : ''%> h-10">
+                <%= row %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
