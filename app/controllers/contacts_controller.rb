@@ -13,6 +13,7 @@ class ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
     if @contact.save
+      ContactMailer.contact_form(@contact).deliver
       redirect_to root_path, notice: "Thank you for your message"
     else
       render :index
