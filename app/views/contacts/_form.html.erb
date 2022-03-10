@@ -6,19 +6,8 @@
       <p class="text-3xl font-bold leading-7 text-center">Contact me</p>
       <%= form_with(model: @contact,local: true, data: {turbo: false} ) do |f| %>
         <!-- render rails error form  --->
-        <% if @contact.errors.any? %>
-        <div class="bg-red-100 border-t border-b border-red-500 text-red-700 px-4 py-3" role="alert">
-          <p class="font-bold"><%= t 'activerecord.errors.template.body' %></p>
-        </div>
-          <div id="error_explanation">
-            <% @contact.errors.messages.values.flatten.each do |msg| %>
-              <div class="flex items-center bg-red-100 text-red-700 text-sm font-bold px-4 py-3" role="alert">
-                <%= inline_svg_tag('icons/ico-exclamation-triangle.svg', class: 'fill-current w-4 h-4 mr-2 text-red-700')%>
-                <p><%= msg %></p>
-              </div>
-            <% end %>
-          </div>
-        <% end %>
+        <%= render 'layouts/shared/error_messages', resource: @contact %>
+
         <div class="md:flex items-center mt-12">
           <div class="w-full md:w-1/2 flex flex-col">
             <%= f.label :name, class: 'label font-semibold leading-none' %>

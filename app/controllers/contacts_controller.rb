@@ -14,13 +14,23 @@ class ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
     if @contact.save
       ContactMailer.contact_form(@contact).deliver
-      redirect_to root_path, notice: "Thank you for your message"
+      redirect_to root_path, success: "Thank you for your message"
     else
-      render :index
+      redirect_to root_path, error: "Message cant be send"
     end
   end
 
   def destroy 
+    name = @contact.email
+    @contact.destroy
+    respond_to do |format|
+      format.html { 
+        redirect_to contact_path, 
+        success: "message from #{name} was successfully destroyed." 
+      }
+      
+      format.turbo_stream
+    end
   end
 
   private 
