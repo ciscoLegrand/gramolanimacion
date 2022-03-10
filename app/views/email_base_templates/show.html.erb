@@ -1,0 +1,8 @@
+<%= render ModalComponent.new(title: @email_base_template.title) do %>
+  <%= turbo_frame_tag 'base_template' do %>
+    <div class="flex flex-col w-full">
+      <h1 class="font-bold text-4xl flex justify-center"> <%= @email_base_template.title  %></h1>
+      <p><%= @email_base_template.content %></p>
+    </div>
+  <% end %>
+<% end %>

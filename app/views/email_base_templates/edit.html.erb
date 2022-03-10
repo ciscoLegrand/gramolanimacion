@@ -1,0 +1,4 @@
+ 
+<%= render ModalComponent.new(title: "Editar #{@email_base_template.title}") do %>
+  <%= render 'form', email_base_template: @email_base_template %>
+<% end %>

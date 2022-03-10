@@ -10,7 +10,11 @@ class EmailBaseTemplate < ApplicationRecord
   validates :kind, uniqueness: true
 
   enum kind: {
-    contact: 0,
+    contacto: 0,
+    campamento_veran: 1,
+    plan_madruga: 2,
+    campamento_urbano: 3,
+    actividades: 4
   }
 
   def self.pending?
