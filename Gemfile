@@ -90,3 +90,7 @@ gem 'inline_svg'
 gem 'pagy'
 gem 'friendly_id'
 gem 'rename'
+gem 'liquid'
+
+# add gem to fix error 
+gem 'io-wait', '0.2.0'

@@ -129,6 +129,7 @@ GEM
       addressable (~> 2.7)
     letter_opener (1.7.0)
       launchy (~> 2.2)
+    liquid (5.1.0)
     loofah (2.14.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -285,8 +286,10 @@ DEPENDENCIES
   image_processing (~> 1.2)
   importmap-rails
   inline_svg
+  io-wait (= 0.2.0)
   jbuilder
   letter_opener
+  liquid
   pagy
   pg (~> 1.1)
   pg_search
