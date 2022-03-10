@@ -6,7 +6,6 @@
       <p class="text-3xl font-bold leading-7 text-center">Contact me</p>
       <%= form_with(model: @contact,local: true, data: {turbo: false} ) do |f| %>
         <!-- render rails error form  --->
-        <%= render 'layouts/shared/error_messages', resource: @contact %>
 
         <div class="md:flex items-center mt-12">
           <div class="w-full md:w-1/2 flex flex-col">
