@@ -3,7 +3,7 @@ class LegalTextsController < ApplicationController
   before_action :ensure_frame_response, only: %i[new edit]
   def index
     @legal_texts = LegalText.all
-    @headers = ['Title',  '', 'Actions']
+    @headers = ['Title',  '']
     @attrs =  [:title]
   end
 
@@ -21,22 +21,41 @@ class LegalTextsController < ApplicationController
     @legal_text = LegalText.new(legal_text_params)
     if @legal_text.save
       respond_to do |format|
-        format.turbo_stream { render turbo_stream: turbo_stream.prepend('legal_text', partial: 'legal_texts/legal_text', locals: {legal_text: @legal_text}) }
-        format.html { redirect_to legal_texts_path, success: "legal_text was successfully created." }
+        format.turbo_stream { 
+          render turbo_stream:  turbo_stream.prepend(
+                                  'legal_text', 
+                                  partial: 'legal_texts/legal_text', 
+                                  locals: { legal_text: @legal_text }
+                                ) 
+        }
+        format.html { 
+          redirect_to legal_texts_path, 
+          success: "legal_text was successfully created." 
+        }
       end
     else
-      redirect_to legal_texts_path, alert: "legal_text was not successfully created."
+      redirect_to legal_texts_path, 
+      alert: "legal_text was not successfully created."
     end
   end
 
   def update
     if @legal_text.update(legal_text_params)
       respond_to do |format|
-        format.turbo_stream { render turbo_stream: turbo_stream.replace(@legal_text, partial: "legal_texts/legal_text", locals: {legal_text: @legal_text}) }
-        format.html { redirect_to legal_texts_path, success: "#{@legal_text.title} was successfully updated." }
+        format.turbo_stream { 
+          render turbo_stream:  turbo_stream.replace(
+                                  @legal_text, partial: "legal_texts/legal_text", 
+                                  locals: {legal_text: @legal_text}
+                                ) 
+        }
+        format.html { 
+          redirect_to legal_texts_path, 
+          success: "#{@legal_text.title} was successfully updated." 
+        }
       end
     else
-      redirect_to legal_texts_path, alert: "#{@legal_text.title} was not successfully updated."
+      redirect_to legal_texts_path, 
+      alert: "#{@legal_text.title} was not successfully updated."
     end
   end
 
@@ -44,7 +63,11 @@ class LegalTextsController < ApplicationController
     name = @legal_text.title
     @legal_text.destroy
     respond_to do |format|
-      format.html { redirect_to legal_texts_path, notice: "#{name} was successfully destroyed." }
+      format.html { 
+        redirect_to legal_texts_path, 
+        notice: "#{name} was successfully destroyed." 
+      }
+      
       format.turbo_stream
     end
   end
