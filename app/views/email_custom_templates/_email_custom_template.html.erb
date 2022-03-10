@@ -1,0 +1,15 @@
+<%= turbo_frame_tag email_custom_template do %>
+  <div class="flex justify-between items-center">
+    <div class="my-5">
+      <strong class="block font-medium mb-1">Title:</strong>
+      <%= email_custom_template.base_title %>
+    </div>
+
+    <% if action_name != "show" %>
+      <%= link_to "Show", email_custom_template,data: { turbo_frame: 'modal' }, class: "button-primary mr-4" %>
+      <%= link_to 'Edit', edit_eamil_base_template_email_custom_template_path(email_custom_template), data: { turbo_frame: 'modal' }, class: "button-primary mr-4" %>
+      <%= button_to 'Delete', email_base_template_email_custom_template_path(email_custom_template), method: :delete, class: 'button-decline mr-4' %>
+      <hr class="mt-6">
+    <% end %>
+  </div>
+<% end %>

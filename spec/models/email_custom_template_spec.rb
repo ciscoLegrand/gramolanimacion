@@ -2,6 +2,9 @@ require 'rails_helper'
 
 RSpec.describe EmailCustomTemplate, type: :model do
   before(:all) do 
+    EmailCustomTemplate.delete_all
+    EmailBaseTemplate.delete_all
+    
     title = "Email contacto" 
     content = Faker::Lorem.paragraphs(240).join("\n\n")
     
