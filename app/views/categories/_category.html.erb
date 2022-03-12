@@ -1,0 +1,15 @@
+<%= turbo_frame_tag category do %>
+  <div class="flex justify-between items-center">
+    <div class="my-5">
+      <strong class="block font-medium mb-1">Name:</strong>
+      <%= category.name %>
+    </div>
+
+    <% if action_name != "show" %>
+      <%= link_to "Show", category,data: { turbo_frame: 'modal' }, class: "button-primary mr-4" %>
+      <%= link_to 'Edit', edit_category_path(category), data: { turbo_frame: 'modal' }, class: "button-primary mr-4" %>
+      <%= button_to 'Delete', category_path(category), method: :delete, class: 'button-decline mr-4' %>
+      <hr class="mt-6">
+    <% end %>
+  </div>
+<% end %>

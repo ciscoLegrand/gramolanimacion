@@ -1,0 +1,7 @@
+<%= render ModalComponent.new(title: @category.name) do %>
+  <%= turbo_frame_tag 'category' do %>
+    <div class="flex flex-col w-full">
+      <p><%= @category.description %></p>
+    </div>
+  <% end %>
+<% end %>
