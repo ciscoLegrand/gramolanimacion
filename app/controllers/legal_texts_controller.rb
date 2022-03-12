@@ -76,6 +76,7 @@ class LegalTextsController < ApplicationController
    def set_legal_text
     @legal_text = LegalText.friendly.find(params[:id])
    end
+   
    def legal_text_params
     params.require(:legal_text).permit(:title, :content)
    end
