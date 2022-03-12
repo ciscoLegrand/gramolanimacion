@@ -9,7 +9,7 @@
               Apartados legales
             </h2>
             <% LegalText.all.each do |legaltext| %>
-              <%= link_to legaltext.title, legaltext %>
+              <%= link_to legaltext.title, site_legal_text_path(legaltext) %>
             <% end %>
           </div>
         </div>
