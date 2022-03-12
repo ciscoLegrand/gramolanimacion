@@ -1,8 +1,58 @@
 <%= render ModalComponent.new(title: @email_custom_template.base_title) do %>
-  <%= turbo_frame_tag 'base_template' do %>
-    <div class="flex flex-col w-full">
-      <h1 class="font-bold text-4xl flex justify-center"> <%= @email_custom_template.base_title  %></h1>
-      <p><%= @email_custom_template.content %></p>
+  <%= turbo_frame_tag 'custom_template' do %>
+    <div class="flex flex-col w-full">      
+      <div class="card card-email card-email__fullheight ">
+        <div class="card-content card-email__fullheight has-background-white-ter is-scrollable-y">
+          <div class="content card-email__content my-6">
+            <!--TODO: RECOVERY PASS TEMPLATE-->
+            
+            <span class="preheader"></span>
+            <table class="email-wrapper" width="100%" cellpadding="0" cellspacing="0" role="presentation" style="width: 100%; -premailer-width: 100%; -premailer-cellpadding: 0; -premailer-cellspacing: 0; background-color: #F2F4F6; margin: 0; padding: 0;" bgcolor="#F2F4F6">
+              <tr>
+                <td align="center" style="word-break: break-word; font-family: &quot;Nunito Sans&quot;, Helvetica, Arial, sans-serif; font-size: 16px;">
+                  <table class="email-content" width="100%" cellpadding="0" cellspacing="0" role="presentation" style="width: 100%; -premailer-width: 100%; -premailer-cellpadding: 0; -premailer-cellspacing: 0; margin: 0; padding: 0;">
+                    <tr>
+                      <td class="email-masthead" style="word-break: break-word; font-family: &quot;Nunito Sans&quot;, Helvetica, Arial, sans-serif; font-size: 16px; text-align: center; padding: 25px 0;" align="center">
+                        <!--  TODO: insert Logo -->
+                        <div class="flex justify-center w-full">
+                          <%= inline_svg_tag('ciscolegrandlogo.svg') %>
+                        </div>
+                      </td>
+                    </tr>
+                    <!-- Email Body -->
+                    <tr>
+                      <td class="email-body" width="570" cellpadding="0" cellspacing="0" style="word-break: break-word; margin: 0; padding: 0; font-family: &quot;Nunito Sans&quot;, Helvetica, Arial, sans-serif; font-size: 16px; width: 100%; -premailer-width: 100%; -premailer-cellpadding: 0; -premailer-cellspacing: 0;">
+                        <table class="email-body_inner" align="center" width="570" cellpadding="0" cellspacing="0" role="presentation" style="width: 570px; -premailer-width: 570px; -premailer-cellpadding: 0; -premailer-cellspacing: 0; background-color: #FFFFFF; margin: 0 auto; padding: 0;" bgcolor="#FFFFFF">
+                          <!-- Body content -->
+                          <tr>
+                            <td class="content-cell" style="word-break: break-word; font-family: &quot;Nunito Sans&quot;, Helvetica, Arial, sans-serif; font-size: 16px; padding: 45px;">
+                              <div class="f-fallback">
+                                <%= raw @template.render(                                    
+                                  'user_name' => 'nombre de usuario',
+                                  'user_email' => 'email de usuario',
+                                  'enterprise' => 'gramola animacón',
+                                  'host' => request.base_url,
+                                  
+                                  )%>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td lass="content-cell" align="center">
+                              <!--insert enterprise email sing -->
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <p></p>
     </div>
   <% end %>
 <% end %>
