@@ -1,4 +1,7 @@
 class Product < ApplicationRecord
+  include FriendlyId 
+  friendly_id :name, use: :slugged
+  
   after_create :set_sku_prefix
   after_create :set_category_name
 
