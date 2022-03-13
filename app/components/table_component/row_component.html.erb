@@ -1,6 +1,10 @@
 <% cells.each do |cell|%>
-  <td class="px-4">
-    <%= cell %>
+  <td class="px-4">    
+    <% if cell.class == BigDecimal %>
+      <%= number_with_precision cell, precision: 2, separator: ',', delimiter: '.' %>
+    <% else %>
+      <%= cell %>
+    <% end %>
   </td>
 <% end %>
 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
