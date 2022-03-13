@@ -29,8 +29,8 @@ RSpec.describe EmailCustomTemplate, type: :model do
     expect(custom2.content.id).to eq(nil)
   end
 
-  it 'is pending' do
-    expect(EmailBaseTemplate.pending?).to eq(true)
+  it 'is not pending' do
+    expect(EmailBaseTemplate.pending?).to_not eq(true)
   end
 
   it 'base has custom template' do
@@ -38,6 +38,6 @@ RSpec.describe EmailCustomTemplate, type: :model do
   end
 
   it 'is kind contact' do
-    expect(@custom.base_kind).to eq('contact')
+    expect(@custom.base_kind).to eq('contacto')
   end
 end
