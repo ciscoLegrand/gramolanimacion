@@ -5,7 +5,7 @@ RSpec.describe Product, type: :model do
     name = "Curso dj iniciacion" 
     description = Faker::Lorem.paragraphs(100).join("\n\n")
     @category = Category.first_or_create(name: "Cursos")
-    @product = Product.first_or_create(category_id: @category.id, name: name, description: description, price: 450.00)
+    @product = Product.first_or_create(category_id: @category.id, name: name, description: description, initia_price: 450.00)
   end
   
   it 'is valid product with valid attributes' do

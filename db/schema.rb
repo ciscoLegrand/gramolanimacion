@@ -104,12 +104,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_12_182655) do
   create_table "products", force: :cascade do |t|
     t.string "name", null: false
     t.string "sku"
-    t.decimal "price", precision: 8, scale: 2, null: false
-    t.decimal "vat", precision: 8, scale: 2, default: "21.0", null: false
-    t.virtual "price_no_vat", type: :decimal, precision: 8, scale: 2, as: "(price - ((price * vat) / (100)::numeric))", stored: true
-    t.virtual "price_in_cents", type: :integer, as: "(price * (100)::numeric)", stored: true
+    t.decimal "initial_price", precision: 8, scale: 2, null: false
+    t.decimal "old_price", precision: 8, scale: 2, default: "0.0", null: false
+    t.decimal "vat", default: "21.0", null: false
+    t.decimal "discount", precision: 8, scale: 2, default: "0.0", null: false
+    t.virtual "price", type: :decimal, precision: 8, scale: 2, as: "(initial_price - ((initial_price * discount) / (100)::numeric))", stored: true
+    t.virtual "price_no_vat", type: :decimal, precision: 8, scale: 2, as: "((initial_price - ((initial_price * discount) / (100)::numeric)) / ((1)::numeric + (vat / (100)::numeric)))", stored: true
+    t.virtual "price_in_cents", type: :integer, as: "((initial_price - ((initial_price * discount) / (100)::numeric)) * (100)::numeric)", stored: true
     t.bigint "category_id", null: false
     t.string "category_name"
+    t.integer "position"
     t.string "slug", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

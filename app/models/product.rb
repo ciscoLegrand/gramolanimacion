@@ -9,15 +9,15 @@ class Product < ApplicationRecord
 
   has_rich_text :description
 
-  validates_presence_of :name, :price
+  validates_presence_of :name, :initial_price
 
   private 
-    def set_sku_prefix
-      number = self&.id.to_s.rjust(6, '0')
-      self.update! sku: "GA-#{number}"      
-    end 
-
-    def set_category_name 
-      self.update! category_name: Category.find(self[:category_id]).name
-    end
+  def set_sku_prefix
+    number = self&.id.to_s.rjust(6, '0')
+    self.update! sku: "GA-#{number}"      
+  end 
+  
+  def set_category_name 
+    self.update! category_name: Category.find(self[:category_id]).name
+  end  
 end
