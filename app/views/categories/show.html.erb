@@ -1,6 +1,11 @@
 <%= render ModalComponent.new(title: @category.name) do %>
   <%= turbo_frame_tag 'category' do %>
     <div class="flex flex-col w-full">
+      <ul>
+      <% @products.each do |product| %>
+        <li><%= product.name %></li>
+      <% end %>
+      </ul>
       <p><%= @category.description %></p>
     </div>
   <% end %>
