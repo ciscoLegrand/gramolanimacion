@@ -1,0 +1,23 @@
+<%= turbo_frame_tag product do %>
+  <div class="flex justify-between items-center">
+    <div class="my-5">
+      <strong class="block font-medium mb-1">Title:</strong>
+      <%= product.name %>
+      <strong class="block font-medium mb-1">Price:</strong>
+      <%= product.price %>
+      <strong class="block font-medium mb-1">Price no vat:</strong>
+      <%= product.price_no_vat %>
+      <strong class="block font-medium mb-1">Category:</strong>
+      <%= product.category_name %>
+      <strong class="block font-medium mb-1">Description:</strong>
+      <%= product.description %>
+    </div>
+
+    <% if action_name != "show" %>
+      <%= link_to "Show", product,data: { turbo_frame: 'modal' }, class: "button-primary mr-4" %>
+      <%= link_to 'Edit', edit_product_path(product), data: { turbo_frame: 'modal' }, class: "button-primary mr-4" %>
+      <%= button_to 'Delete', products_path(product), method: :delete, class: 'button-decline mr-4' %>
+      <hr class="mt-6">
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,4 @@
+ 
+<%= render ModalComponent.new(title: "Editar #{@product.name}") do %>
+  <%= render 'form', product: @product %>
+<% end %>

@@ -7,8 +7,10 @@ Rails.application.routes.draw do
   scope '/admin' do
     resources :legal_texts
     resources :contacts
-    resources :categories
-
+    resources :products
+    resources :categories do 
+      resources :products
+    end
     resources :email_base_templates do 
       resources :email_custom_templates, except: %w[show]
     end 
