@@ -1,6 +1,16 @@
-<h3 class="font-bold text-4xl flex justify-center" id="modal-title"><%= @category.name %></h3>
+<div class="bg-gradient-to-b from-blue-800 to-blue-600 h-96 w-full"></div>
+<div class="max-w-5xl mx-auto px-6 sm:px-6 lg:px-8 mb-12">
+  <div class="bg-white w-full shadow-xl rounded p-8 sm:p-12 -mt-72">
+    <h3 class="font-bold text-4xl flex justify-center"><%= @category.name %></h3>
+    <hr class="m-5">
+    <%= @category.description %>
+  </div>
+</div>
 <hr>
-<h3 class="font-bold text-2xl flex justify-center" id="modal-title"><%= @category.description %></h3>
 
-
-<%= turbo_frame_tag 'category', src: @category %>
+<ul>
+  <% @category.products.each do |product| %>
+    <li><%= product.name %> || <%= number_to_currency product.price %></li>
+    <%#= turbo_frame_tag 'product', src: product %>
+  <% end %>
+</ul>

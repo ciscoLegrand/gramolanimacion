@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   before_action :ensure_frame_response, only: [:new, :edit]
   def index 
     @products = Product.all 
-    @headers = ['Name', 'SKU', 'Initial Price','Price','PNV', 'Vat', 'Category',  'Discount', '']
+    @headers = ['Name', 'SKU', 'Initial Price€','Price€','PNV', 'Vat%', 'Category',  'Discount%', '']
     @attrs =  [:name, :sku, :initial_price ,:price, :price_no_vat, :vat, :category_name, :discount]
   end
 
