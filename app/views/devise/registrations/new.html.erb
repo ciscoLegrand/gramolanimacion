@@ -1,0 +1,32 @@
+<%= render ModalComponent.new(title: "Registro") do %>  
+  <%= form_for(resource, as: resource_name, url: registration_path) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'block border border-grey-light w-full p-3 rounded mb-4' %>
+    </div>
+
+    <div class="field">
+      <%= f.label :phone %><br />
+      <%= f.number_field :phone, autofocus: true, autocomplete: "phone", class: 'block border border-grey-light w-full p-3 rounded mb-4' %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password", class: 'block border border-grey-light w-full p-3 rounded mb-4' %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'block border border-grey-light w-full p-3 rounded mb-4' %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Sign up", class: 'button-primary w-full m-0' %>
+    </div>
+  <% end %>
+  <%= render "devise/shared/links" %>
+<% end %>

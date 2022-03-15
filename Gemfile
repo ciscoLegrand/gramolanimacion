@@ -91,6 +91,7 @@ gem 'pagy'
 gem 'friendly_id'
 gem 'rename'
 gem 'liquid'
+gem 'devise'
 
 # add gem to fix error 
 gem 'io-wait', '0.2.0'
