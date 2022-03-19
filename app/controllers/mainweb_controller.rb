@@ -14,6 +14,12 @@ class MainwebController < ApplicationController
     @legal_text = LegalText.friendly.find(params[:legal_text_id])
   end
 
+  def profile 
+  end
+
+  def admin_panel
+  end
+
   def cookies
   end
 
@@ -21,4 +27,5 @@ class MainwebController < ApplicationController
     def set_category 
       @category = Category.friendly.find(params[:category_id])
     end
+    
 end

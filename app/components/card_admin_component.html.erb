@@ -1,0 +1,21 @@
+<div class="w-full md:w-1/4 mx-3 mb-3 border-r border-b border-l border-indigo-100 lg:border-t lg:border-indigo-300 shadow-lg bg-white hover:bg-cyan-200 rounded-xl p-4 flex flex-col justify-between leading-normal">
+  
+  <%= link_to path do%>
+    <div class="mb-8">
+    
+      <%= tag.p class: %w(text-sm text-gray-600 flex items-center) do %>
+        <%= inline_svg_tag("icons/#{icon}", size: size)%>
+        <%= message %>
+      <% end %>
+      
+      <%= tag.div class: %w(text-gray-900 font-bold text-xl mb-2)  do %>
+        <%= title %>
+      <% end %>
+      
+      <%= tag.p class: %w(text-gray-700 text-base) do %>  
+        <%= description %>
+      <% end %>
+      
+    </div>
+  <% end %>
+</div>
