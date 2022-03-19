@@ -1,0 +1,125 @@
+<div class="flex flex-wrap" id="tabs-id" data-controller="tabs">
+  <div class="w-full">
+    <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row">
+      <li class="-mb-px mr-2 last:mr-0 flex-auto text-center cursor-pointer">
+        <a class="linkprofile text-lg font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal text-white bg-indigo-600 flex flex-row justify-center"
+           id="linkprofile"
+           data-tabs-target="tabLink"
+           data-action="tabs#displayContent" >
+          <%= inline_svg_tag('icons/ico-profile.svg', size: '32')%> Profile
+        </a>
+      </li>
+      <li class="-mb-px mr-2 last:mr-0 flex-auto text-center cursor-pointer">
+        <a class="linkorders text-lg font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal text-indigo-600 bg-white flex flex-row justify-center"
+           id="linkorders"
+           data-tabs-target="tabLink"
+           data-action="tabs#displayContent" >
+            <%= inline_svg_tag('icons/ico-presentation-chart-line.svg', size: '32')%> Pedidos
+        </a>
+      </li>
+      <li class="-mb-px mr-2 last:mr-0 flex-auto text-center cursor-pointer">
+        <a class="linksettings text-lg font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal text-indigo-600 bg-white flex flex-row justify-center"
+            id="linksettings"
+            data-tabs-target="tabLink"
+            data-action="tabs#displayContent" >
+            <%= inline_svg_tag('icons/ico-adjustments.svg', size: '32')%> settings
+        </a>
+      </li>
+    </ul>
+    <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6">
+      <div class="px-4 py-5 flex-auto">
+        <div class="tab-content tab-space">
+          <div class="linkprofile block" data-tabs-target="tabContent">
+            <div class="max-w-sm w-full lg:max-w-full lg:flex justify-center flex-wrap">
+
+                <%= current_user.email %>
+            </div>
+          </div>
+          <div class="linkorders hidden" data-tabs-target="tabContent">
+            <div class="max-w-sm w-full lg:max-w-full lg:flex justify-center flex-wrap">
+
+                un pedido
+            </div>
+          </div>
+          <div class="linksettings hidden" data-tabs-target="tabContent">
+            <div class="max-w-sm w-full lg:max-w-full lg:flex justify-center flex-wrap">
+              <%= form_for(current_user, url: update_profile_path(id: current_user.id), html: { method: :put }) do |f| %>
+                <%= render "devise/shared/error_messages", resource: current_user %>
+                <div class="field">
+                  <%= f.label :email %><br />
+                  <%= f.text_field :email, autofocus: true, class: 'block border border-grey-light w-full p-3 rounded mb-4', disable: true, readonly: true%>
+                </div>
+                <div class="field">
+                  <%= f.label :name %><br />
+                  <%= f.text_field :name, autofocus: true, class: 'block border border-grey-light w-full p-3 rounded mb-4' %>
+                </div>
+
+                <div class="field">
+                  <%= f.label :last_name %><br />
+                  <%= f.text_field :last_name, autofocus: true, class: 'block border border-grey-light w-full p-3 rounded mb-4' %>
+                </div>
+
+                <div class="field">
+                  <%= f.label :phone %><br />
+                  <%= f.number_field :phone, autofocus: true, class: 'block border border-grey-light w-full p-3 rounded mb-4' %>
+                </div>
+                
+                <div class="field">
+                  <%= f.label :city %><br />
+                  <%= f.text_field :city, autofocus: true, class: 'block border border-grey-light w-full p-3 rounded mb-4' %>
+                </div>
+                
+                <div class="field">
+                  <%= f.label :postal_code %><br />
+                  <%= f.number_field :postal_code, autofocus: true, class: 'block border border-grey-light w-full p-3 rounded mb-4' %>
+                </div>
+
+                <div class="field">
+                  <%= f.label :address %><br />
+                  <%= f.text_field :address, autofocus: true, class: 'block border border-grey-light w-full p-3 rounded mb-4' %>
+                </div>
+                
+                <div class="field">
+                  <%= f.label :birthdate %><br />
+                  <%= f.date_field :birthdate, autofocus: true, class: 'block border border-grey-light w-full p-3 rounded mb-4' %>
+                </div>
+
+
+                <div class="field">
+                  <%= f.label :avatar %><br />
+                  <%= f.file_field :avatar, autofocus: true, class: 'block border border-grey-light w-full p-3 rounded mb-4' %>
+                </div>
+
+
+                <div class="field">
+                  <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+                  <%= f.password_field :password, autocomplete: "new-password", class: 'block border border-grey-light w-full p-3 rounded mb-4' %>
+                  <% if @minimum_password_length %>
+                    <br />
+                    <em><%= @minimum_password_length %> characters minimum</em>
+                  <% end %>
+                </div>
+
+                <div class="field">
+                  <%= f.label :password_confirmation %><br />
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'block border border-grey-light w-full p-3 rounded mb-4' %>
+                </div>
+
+                <div class="field">
+                  <%= f.label :current_password %> <i>(we need your current password to confirm your changes**)</i><br />
+                  <%= f.password_field :current_password, autocomplete: "current-password", class: 'block border border-grey-light w-full p-3 rounded mb-4', required: true %>
+                </div>
+
+                <div class="actions">
+                  <%= f.submit "Update", class: 'button-primary m-3' %>
+                  <%= link_to "Back", :back, class: 'button-default m-3' %>
+                  <%#= button_to "Cancel my account", registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete, class: 'button-decline m-3' %></p>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -3,11 +3,14 @@ Rails.application.routes.draw do
   
   match 'categorias/:category_id',     to: 'mainweb#site_category',     via: :get, as: :site_category
   match 'textos/:legal_text_id',       to: 'mainweb#site_legal_text',   via: :get, as: :site_legal_text
+  match 'admin',                       to: 'mainweb#admin_panel',             via: :get, as: :admin_panel 
+  match 'profile/:user_id', to: 'mainweb#profile', via: :get, as: :user_profile
   
   scope '/admin' do
     resources :legal_texts
     resources :contacts
     resources :products
+    resources :users
     resources :categories do 
       resources :products
     end
@@ -33,8 +36,9 @@ Rails.application.routes.draw do
     post 'register',     to: 'users/registrations#create',      as: :registration
     get  'forgot_password', to: 'users/passwords#new',          as: :forgot_password
     post 'forgot_password', to: 'users/passwords#create',       as: :create_forgot_password
-    # get  'profile',      to: 'user_registrations#edit',        as: :edit_profile
-    # put  'profile',      to: 'user_registrations#update',      as: :update_profile
+    get  'profile/:user_id',      to: 'users/registrations#edit',        as: :edit_profile
+    put  'profile/user_id',      to: 'users/registrations#update',      as: :update_profile
+    
     get  'logout',       to: 'users/sessions#destroy',          as: :logout
   end
 end
