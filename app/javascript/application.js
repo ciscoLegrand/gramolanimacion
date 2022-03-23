@@ -3,3 +3,6 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "trix"
 import "@rails/actiontext"
+import Swiper, { Navigation } from "swiper";
+  
+Swiper.use([Navigation]);
