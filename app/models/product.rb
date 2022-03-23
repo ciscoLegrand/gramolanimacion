@@ -9,6 +9,8 @@ class Product < ApplicationRecord
 
   has_rich_text :description
 
+  has_many_attached :images
+
   validates_presence_of :name, :initial_price
 
   private 

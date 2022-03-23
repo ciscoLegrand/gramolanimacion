@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  skip_before_action :authenticate_user!, only: %i[show]
   # before_action :set_category, only: [:index, :show]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :ensure_frame_response, only: [:new, :edit]
@@ -9,6 +10,7 @@ class ProductsController < ApplicationController
   end
 
   def show    
+    @products = Product.order(created_at: :desc).limit(4)
   end
 
   def new
@@ -81,7 +83,7 @@ class ProductsController < ApplicationController
   
   private 
     def product_params
-      params.require(:product).permit(:name, :description,:initial_price, :price, :old_price, :price_no_vat, :price_in_cents, :discount, :category_id, :vat, :position)
+      params.require(:product).permit(:name, :description,:initial_price, :price, :old_price, :price_no_vat, :price_in_cents, :discount, :category_id, :vat, :position, images:[])
     end
 
     def set_product

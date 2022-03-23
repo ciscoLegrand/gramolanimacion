@@ -1,5 +1,5 @@
 <div class="block p-6 rounded-lg shadow-lg bg-white">
-  <%= form_with(model: @product,local: true, data: {turbo: false} ) do |f| %>
+  <%= form_with(model: @product,local: true, data: {turbo: false}, html: {multipart: true} ) do |f| %>
     <!-- render rails error form  --->
 
     <div class="md:flex items-center mt-12">
@@ -29,6 +29,9 @@
           <%= f.number_field :discount, placeholder: 0.00, class: 'textfield leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200' %>
         </div>
       <%# end %>
+    </div>
+    <div class="md:flex items-center mt-12">
+      <%= f.file_field :images, multiple: true %>
     </div>
     <div class="form-group mb-6">
         <%= f.label :description, class: 'label' %>          
