@@ -13,7 +13,7 @@
 */
 
 .trix-content {
-  min-height: 5rem;
+  min-height: auto;
 }
 .trix-content ul {
   list-style-type: disc;

@@ -8,12 +8,13 @@
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css">
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
     <%= render 'layouts/partials/navigation' %>
-    <main class="container mx-auto px-5 flex flex-col">
+    <main class="w-full mx-auto px-5 flex flex-col justify-center items-center">
       <%= turbo_frame_tag 'modal' %>  
       <div class="fixed inset-0 px-4 py-6 pointer-events-none sm:p-6 sm:items-start sm:justify-end">
         <div id="notifications" class="flex flex-col items-end justify-center">

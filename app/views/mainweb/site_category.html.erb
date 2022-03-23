@@ -1,16 +1,32 @@
-<div class="bg-gradient-to-b from-blue-800 to-blue-600 h-96 w-full"></div>
-<div class="max-w-5xl mx-auto px-6 sm:px-6 lg:px-8 mb-12">
-  <div class="bg-white w-full shadow-xl rounded p-8 sm:p-12 -mt-72">
-    <h3 class="font-bold text-4xl flex justify-center"><%= @category.name %></h3>
-    <hr class="m-5">
-    <%= @category.description %>
+<div class="bg-gradient-to-b from-blue-800 to-blue-600 h-56 w-full relative">
+  <div class="w-2/3 mx-auto px-6 sm:px-6 lg:px-8 absolute -bottom-6 right-0 left-0">
+    <div class="bg-white w-full shadow-xl rounded p-8 sm:p-12">
+      <h3 class="font-bold text-4xl flex justify-center"><%= @category.name %></h3>
+      <hr class="m-3">
+      <%= @category.description %>
+    </div>
   </div>
 </div>
+<div class="h-40"></div>
 <hr>
-
-<ul>
-  <% @category.products.each do |product| %>
-    <li><%= product.name %> || <%= number_to_currency product.price %></li>
-    <%#= turbo_frame_tag 'product', src: product %>
-  <% end %>
-</ul>
+<section class="w-2/3 text-gray-700 body-font overflow-hidden bg-white">
+  <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
+    <% @products.each do |product|%>
+      <!-- product_card_component --->
+      <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+        <%= link_to product do %>
+          <div class="flex items-end justify-end h-56 w-full bg-cover" style="background-image: url(<%= url_for(product.images.first) %>)">
+            <button class="h-12 w-12 p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500 flex justify-center items-center">
+              <%= inline_svg_tag('icons/ico-cart.svg', size: '34') %>
+            </button>
+          </div>
+          <div class="px-5 py-3">
+            <h3 class="text-gray-700 uppercase"><%= product.name %></h3>
+            <span class="text-gray-500 mt-2"><%= product.category_name %></span>
+          </div>
+        <% end %>
+      </div>
+      <!---end product_card_component--->
+    <% end %>
+  </div>
+</section>  
