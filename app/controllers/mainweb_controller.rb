@@ -4,8 +4,8 @@ class MainwebController < ApplicationController
 
   def index
     @contact = Contact.new
-    @courses = Product.where(category_id: 2).order(created_at: :desc).limit(6) if Product.where(category_id: 2).present?
-    @activities = Product.where(category_id: 3).order(created_at: :desc).limit(6) if Product.where(category_id: 3).present?
+    @swiper = Product.where(swiper: true).order(created_at: :desc).limit(6)
+    @highlights = Product.where(highlight: true).order(created_at: :desc)
   end
 
   def site_category

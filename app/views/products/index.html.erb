@@ -1,25 +1,27 @@
-<div class="flex fle-col" data-controller="launch-modal">
-  <%= turbo_frame_tag 'products',class:'w-full' do %>
-    <h1 class="font-bold text-4xl text-center">Productos</div>
-  <% end %>
+<div class="container">
+  <div class="flex fle-col" data-controller="launch-modal">
+    <%= turbo_frame_tag 'products',class:'w-full' do %>
+      <h1 class="font-bold text-4xl text-center mt-6 mb-6">Productos</div>
+    <% end %>
 
-  <%= button_to 'new', new_product_path, method: :get, data: { turbo_frame: 'modal' },class: 'button-primary w-20' %>
-  
-  <%= turbo_frame_tag Product.new %>
+    <%= button_to 'new', new_product_path, method: :get, data: { turbo_frame: 'modal' },class: 'button-primary w-20' %>
+    
+    <%= turbo_frame_tag Product.new %>
 
-  <%= render TableComponent.new(headers: @headers) do |table| %>
-    <%= @products.each do |product|%>
-      <%= table.row(cells: object_to_table_cells(product, @attrs)) do  |row| %>
-        <% row.actions do %>
-          <div class="flex flex-row justify-end">
-            <% if action_name != "show" %>
-              <%= link_to "Show", product, class: "button-primary mr-4" %>
-              <%= link_to 'Edit', edit_product_path(product), data: { turbo_frame: 'modal' }, class: "button-primary mr-4" %>
-              <%= button_to 'Delete', product_path(product), method: :delete, class: 'button-decline mr-4' %>
-            <% end %>
-          </div>
+    <%= render TableComponent.new(headers: @headers) do |table| %>
+      <%= @products.each do |product|%>
+        <%= table.row(cells: object_to_table_cells(product, @attrs)) do  |row| %>
+          <% row.actions do %>
+            <div class="flex flex-row justify-end">
+              <% if action_name != "show" %>
+                <%= link_to "Show", product, class: "button-primary mr-4" %>
+                <%= link_to 'Edit', edit_product_path(product), data: { turbo_frame: 'modal' }, class: "button-primary mr-4" %>
+                <%= button_to 'Delete', product_path(product), method: :delete, class: 'button-decline mr-4' %>
+              <% end %>
+            </div>
+          <% end %>
         <% end %>
       <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>

@@ -12,6 +12,8 @@ class CreateProducts < ActiveRecord::Migration[7.0]
       t.virtual :price_in_cents, type: :integer, as: '(initial_price - (initial_price * discount / 100)) * 100', stored: true
       t.references :category, null: false, foreign_key: true
       t.string  :category_name
+      t.boolean :swiper 
+      t.boolean :highlight
       t.integer :position
       t.string :slug, unique: true, null: false
       t.timestamps

@@ -113,6 +113,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_15_192211) do
     t.virtual "price_in_cents", type: :integer, as: "((initial_price - ((initial_price * discount) / (100)::numeric)) * (100)::numeric)", stored: true
     t.bigint "category_id", null: false
     t.string "category_name"
+    t.boolean "swiper"
+    t.boolean "highlight"
     t.integer "position"
     t.string "slug", null: false
     t.datetime "created_at", null: false
