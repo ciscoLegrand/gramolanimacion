@@ -13,7 +13,21 @@ export default class extends Controller {
       navigation: {
         nextEl: this.nextTarget,
         prevEl: this.prevTarget,
-      }
+      },
+      breakpoints: {
+        320: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+        },
+        768: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+        },
+        1243: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+        },
+      },    
     })
   }
   disconnect() {
