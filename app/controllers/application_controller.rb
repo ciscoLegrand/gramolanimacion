@@ -13,4 +13,8 @@ class ApplicationController < ActionController::Base
     def set_categories 
       @categories = Category.all 
     end
+
+    def set_cart
+      @cart = Cart.find(session[:cart_id]) if session[:cart_id].present?
+    end
 end

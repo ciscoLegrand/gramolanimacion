@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   root "mainweb#index"
   
-  match 'categorias/:category_id',     to: 'mainweb#site_category',     via: :get, as: :site_category
-  match 'textos/:legal_text_id',       to: 'mainweb#site_legal_text',   via: :get, as: :site_legal_text
-  match 'admin',                       to: 'mainweb#admin_panel',             via: :get, as: :admin_panel 
-  match 'profile/:user_id', to: 'mainweb#profile', via: :get, as: :user_profile
+  match 'categorias/:category_id',              to: 'mainweb#site_category',      via: :get, as: :site_category
+  match 'categorias/:category_id/:product_id',  to: 'mainweb#site_product',       via: :get, as: :site_product
+  match 'cart',                                 to: 'mainweb#site_cart',          via: :get, as: :site_cart    
+  match 'textos/:legal_text_id',                to: 'mainweb#site_legal_text',    via: :get, as: :site_legal_text
+  match 'admin',                                to: 'mainweb#admin_panel',        via: :get, as: :admin_panel 
+  match 'profile/:user_id',                     to: 'mainweb#profile',            via: :get, as: :user_profile
   
   scope '/admin' do
     resources :legal_texts
