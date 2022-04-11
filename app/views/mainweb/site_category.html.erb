@@ -9,24 +9,14 @@
 </div>
 <div class="h-40"></div>
 <hr>
-<section class="w-2/3 text-gray-700 body-font overflow-hidden bg-white">
-  <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
-    <% @products.each do |product|%>
-      <!-- product_card_component --->
-      <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden transition-transform duration-500 delay-200 hover:scale-110">
-        <%= link_to product do %>
-          <div class="flex items-end justify-end h-56 w-full bg-cover" style="background-image: url(<%= url_for(product.images.first) %>)">
-            <button class="h-12 w-12 p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500 flex justify-center items-center">
-              <%= inline_svg_tag('icons/ico-cart.svg', size: '34') %>
-            </button>
-          </div>
-          <div class="px-5 py-3">
-            <h3 class="text-gray-700 uppercase"><%= product.name %></h3>
-            <span class="text-gray-500 mt-2"><%= product.category_name %></span>
-          </div>
-        <% end %>
-      </div>
-      <!---end product_card_component--->
-    <% end %>
-  </div>
-</section>  
+<% if @products.first.present?  %>
+  <section class="w-2/3 text-gray-700 body-font overflow-hidden bg-white my-10 p-10">
+    <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
+      <% @products.each do |product|%>
+        <!-- product_card_component --->
+        <%= render(CardProductComponent.new(product: product)) %>
+        <!---end product_card_component--->
+      <% end %>
+    </div>
+  </section>  
+<% end %>
