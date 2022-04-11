@@ -17,12 +17,11 @@
         <li> 
           <%= link_to inline_svg_tag('icons/ico-bag.svg'), site_cart_path, class: 'block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 ' %> 
         </li>
-      
         <% if user_signed_in? %> 
-        <li> <%= link_to inline_svg_tag('icons/ico-corg.svg'), admin_panel_path, class: 'block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700' if current_user.admin? %> </li>
-        <li><%= link_to inline_svg_tag('icons/ico-logout.svg'), logout_path, class: 'block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700' %> </li>
+          <li> <%= link_to inline_svg_tag('icons/ico-corg.svg'), admin_panel_path, class: 'block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700' if current_user.admin? %> </li>
+          <li><%= link_to inline_svg_tag('icons/ico-logout.svg'), logout_path, class: 'block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700' %> </li>
         <% else %>
-        <><%= link_to inline_svg_tag('icons/ico-profile.svg'), login_path,  
+        <li><%= link_to inline_svg_tag('icons/ico-profile.svg'), login_path,  
           data: { turbo_frame: 'modal' }, 
           class: 'block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700' %> 
           </li>
