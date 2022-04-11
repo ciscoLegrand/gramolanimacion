@@ -47,6 +47,23 @@
         <%= f.label :description, class: 'label' %>          
         <%= f.rich_text_area :description %>
     </div>
+
+    <h2>Optional data</h2>
+    <div data-controller="nested-form">
+      <template data-nested-form-target='template'>
+        <%= f.fields_for :product_fields, @product.product_fields.new, child_index: 'TEMPLATE_RECORD' do |option| %>
+          <%= render 'product_fields', form: option %>
+        <% end %>
+      </template>
+
+      <%= f.fields_for :product_fields do |option| %>
+        <%= render 'product_fields', form: option %>
+      <% end %>
+
+      <div data-nested-form-target="add_item">
+        <%= link_to "añadir", "#",class: 'button-primary', data: { action: "nested-form#add_association" } %>
+      </div>
+    </div>
     <%= f.submit nil, class: 'button-primary' %>   
   <% end %>
 </div>

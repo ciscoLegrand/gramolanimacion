@@ -1,0 +1,20 @@
+<div class='nested-fields'>
+  <div class='field is-horizontal'>
+    <%= form.hidden_field :_destroy %>
+    <div class="field-body flex flex-row">
+      <div class="w-full md:w-1/4 flex flex-col md:ml-6 md:mt-0 mt-4 form-check">
+      <%= form.select :field_type, %w[text_field check_box file_field]%>
+      </div>
+      <div class="w-full md:w-1/4 flex flex-col md:ml-6 md:mt-0 mt-4 form-check">
+      <%= form.text_field :name, placeholder: 'field_name', class: 'textfield leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200' %>
+      </div>
+      <div class="w-full md:w-1/4 flex flex-col md:ml-6 md:mt-0 mt-4 form-check">
+        <%= form.label :required, class: 'label font-semibold leading-none' %>
+        <%= form.check_box :required, class: 'form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer' %>
+      </div>
+    </div>
+    <div class="w-full md:w-1/4 flex flex-col md:ml-6 md:mt-0 mt-4 form-check">
+      <%= link_to "Eliminar", "#", class: 'button-primary',data: { action: "click->nested-form#remove_association" } %>
+    </div>
+  </div>
+</div>

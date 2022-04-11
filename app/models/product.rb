@@ -13,6 +13,15 @@ class Product < ApplicationRecord
 
   validates_presence_of :name, :initial_price
 
+  has_many :cart_items
+  
+  has_many :product_fields
+      
+  accepts_nested_attributes_for :product_fields,
+    allow_destroy: true,
+    reject_if: proc { |attr| attr['category_id'].blank? }
+
+
   private 
   def set_sku_prefix
     number = self&.id.to_s.rjust(6, '0')
