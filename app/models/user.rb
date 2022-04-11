@@ -5,6 +5,8 @@ class User < ApplicationRecord
   include PermissionLevel
   include PgSearch::Model
   
+  has_many :orders, dependent: :destroy
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable
 end

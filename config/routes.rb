@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   match 'textos/:legal_text_id',                to: 'mainweb#site_legal_text',    via: :get, as: :site_legal_text
   match 'admin',                                to: 'mainweb#admin_panel',        via: :get, as: :admin_panel 
   match 'profile/:user_id',                     to: 'mainweb#profile',            via: :get, as: :user_profile
-  
+  match 'inscribirse/:product_id',                      to: 'orders#new',                 via: [:get,:post], as: :new_order
   scope '/admin' do
     resources :legal_texts
     resources :contacts

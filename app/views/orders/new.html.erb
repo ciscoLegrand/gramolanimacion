@@ -1,0 +1,7 @@
+<% if Category.find(@product.category_id).name.upcase == 'CURSOS' %>
+  <%= render 'orders/forms/course_form' %>
+<% elsif Category.find(@product.category_id).name.upcase == 'ACTIVIDADES' %>
+  <%= render 'orders/forms/activities_form' %>
+<% elsif Category.find(@product.category_id).name.upcase == 'CAMPAMENTOS' %>
+  <%= render 'orders/forms/camps_form' %>
+<% end %>
