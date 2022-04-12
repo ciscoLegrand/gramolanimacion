@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_11_170927) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_12_145342) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -86,6 +86,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_11_170927) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "data_enterprises", force: :cascade do |t|
+    t.string "commercial_name"
+    t.string "business_name"
+    t.string "nif"
+    t.string "meta_title"
+    t.string "meta_description"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "email_base_templates", force: :cascade do |t|
     t.string "title", null: false
     t.integer "kind", null: false
@@ -133,9 +144,25 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_11_170927) do
 
   create_table "orders", force: :cascade do |t|
     t.bigint "cart_id", null: false
+    t.float "total_amount", null: false
+    t.float "discount", default: 0.0, null: false
     t.bigint "user_id", null: false
-    t.float "total_amount"
-    t.float "discount"
+    t.string "name", default: "", null: false
+    t.string "last_name", default: "", null: false
+    t.string "email", null: false
+    t.string "dni", null: false
+    t.integer "phone", null: false
+    t.string "address", null: false
+    t.string "city", null: false
+    t.string "region", null: false
+    t.integer "zip", null: false
+    t.string "country", null: false
+    t.string "birthdate", null: false
+    t.string "affiliation"
+    t.string "tutor_name", default: "", null: false
+    t.string "tutor_last_name", default: "", null: false
+    t.string "tutor_dni", null: false
+    t.string "tutor_phone", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cart_id"], name: "index_orders_on_cart_id"
@@ -175,17 +202,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_11_170927) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name", default: "", null: false
-    t.string "last_name"
-    t.string "phone", null: false
     t.string "email", null: false
+    t.string "name"
+    t.string "last_name"
+    t.integer "phone"
+    t.string "dni"
     t.string "stripe_customer_id"
     t.string "stripe_subscription_id"
     t.integer "stripe_price_id"
-    t.integer "postal_code"
-    t.string "city"
-    t.string "province"
     t.text "address"
+    t.string "city"
+    t.integer "zip"
+    t.string "region"
+    t.string "country"
     t.date "birthdate"
     t.text "avatar_data"
     t.datetime "deleted_at"

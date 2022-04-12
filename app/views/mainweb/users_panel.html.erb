@@ -1,0 +1,49 @@
+<div class="container flex flex-wrap" id="tabs-id" data-controller="tabs">
+  <div class="w-full">
+    <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row">
+      <li class="-mb-px mr-2 last:mr-0 flex-auto text-center cursor-pointer">
+        <a class="linkprofile text-lg font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal text-white bg-indigo-600 flex flex-row justify-center"
+           id="linkprofile"
+           data-tabs-target="tabLink"
+           data-action="tabs#displayContent" >
+          <%= inline_svg_tag('icons/ico-profile.svg', size: '32')%> Profile
+        </a>
+      </li>
+      <li class="-mb-px mr-2 last:mr-0 flex-auto text-center cursor-pointer">
+        <a class="linkmannaging text-lg font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal text-indigo-600 bg-white flex flex-row justify-center"
+           id="linkmannaging"
+           data-tabs-target="tabLink"
+           data-action="tabs#displayContent" >
+            <%= inline_svg_tag('icons/ico-presentation-chart-line.svg', size: '32')%> mannaging
+        </a>
+      </li>
+    </ul>
+    <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6">
+      <div class="px-4 py-5 flex-auto">
+        <div class="tab-content tab-space">
+          <div class="linkprofile block" id="mannaging" data-tabs-target="tabContent">
+            <div class="max-w-sm w-full lg:max-w-full lg:flex justify-center flex-wrap">
+
+              <%= render(CardAdminComponent.new( 
+                title: 'Usuarios',
+                message: 'public',
+                description:  'Perfil de usuario',
+                path: user_profile_path(current_user),
+              ))%>
+            </div>
+          </div>
+          <div class="linkmannaging hidden" id="profile" data-tabs-target="tabContent">
+            <div class="max-w-sm w-full lg:max-w-full lg:flex justify-center flex-wrap">
+                <%= render(CardAdminComponent.new( 
+                  title: 'Pedidos',
+                  description:  'Consultar pedidos',
+                  path: user_orders_path,
+                ))%>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

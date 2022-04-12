@@ -1,6 +1,10 @@
 <nav class="border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800 shadow-lg">
   <div class="container flex flex-wrap justify-between items-center mx-auto">
-    <%= link_to inline_svg_tag('ciscolegrandlogo.svg', size:'80px',class: 'self-center text-lg font-semibold whitespace-nowrap dark:text-white'), root_path, class: 'flex'%>
+    <% if DataEnterprise.first&.logo.present? %>
+      <%= link_to image_tag(url_for(DataEnterprise.first.logo), width:'80px',class: 'self-center text-lg font-semibold whitespace-nowrap dark:text-white'), root_path, class: 'flex'%>  
+    <% else %>
+      <%= link_to inline_svg_tag('ciscolegrandlogo.svg', size:'80px',class: 'self-center text-lg font-semibold whitespace-nowrap dark:text-white'), root_path, class: 'flex'%>
+    <% end %>
     <div class="  justify-between items-center w-full md:flex md:w-auto md:order-1" id="mobile-menu-2" data-controller="launch-modal">
       <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
         <li> <%= link_to 'Home', root_path, class: 'block py-2 pr-4 pl-3 update_profiletext-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700' %> </li>
@@ -18,10 +22,14 @@
           <%= link_to inline_svg_tag('icons/ico-bag.svg'), site_cart_path, class: 'block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 ' %> 
         </li>
         <% if user_signed_in? %> 
-          <li> <%= link_to inline_svg_tag('icons/ico-corg.svg'), admin_panel_path, class: 'block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700' if current_user.admin? %> </li>
+          <% if current_user.admin? %>
+            <li> <%= link_to inline_svg_tag('icons/ico-corg.svg'), admin_panel_path, class: 'block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700'  %> </li>
+          <% else %>
+            <li> <%= link_to inline_svg_tag('icons/ico-profile.svg'), users_panel_path, class: 'block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700'  %> </li>
+          <% end %>
           <li><%= link_to inline_svg_tag('icons/ico-logout.svg'), logout_path, class: 'block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700' %> </li>
         <% else %>
-        <li><%= link_to inline_svg_tag('icons/ico-profile.svg'), login_path,  
+          <li><%= link_to inline_svg_tag('icons/ico-profile.svg'), login_path,  
           data: { turbo_frame: 'modal' }, 
           class: 'block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700' %> 
           </li>

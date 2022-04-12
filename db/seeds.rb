@@ -1,3 +1,4 @@
+User.create(email: 'test@test.com', password: 'test123', role: 'admin')
 cat1 = Category.create!(name: "Cursos",description: Faker::Lorem.paragraphs(number: 3))
 cat2 = Category.create!(name: "Campamentos",description: Faker::Lorem.paragraphs(number: 3))
 cat3 = Category.create!(name: "Actividades",description: Faker::Lorem.paragraphs(number: 3))
@@ -12,6 +13,6 @@ cat3 = Category.create!(name: "Actividades",description: Faker::Lorem.paragraphs
   )
 end
 
-puts cat1.products.last.name
-puts cat2.products.last.name
-puts cat3.products.last.name
+puts cat1.products&.last.name
+puts cat2.products&.last.name
+puts cat3.products&.last.name

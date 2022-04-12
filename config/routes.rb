@@ -6,13 +6,26 @@ Rails.application.routes.draw do
   match 'cart',                                 to: 'mainweb#site_cart',          via: :get, as: :site_cart    
   match 'textos/:legal_text_id',                to: 'mainweb#site_legal_text',    via: :get, as: :site_legal_text
   match 'admin',                                to: 'mainweb#admin_panel',        via: :get, as: :admin_panel 
+  match 'users',                                to: 'mainweb#users_panel',        via: :get, as: :users_panel
   match 'profile/:user_id',                     to: 'mainweb#profile',            via: :get, as: :user_profile
-  match 'inscribirse/:product_id',                      to: 'orders#new',                 via: [:get,:post], as: :new_order
+  match ':product_id/inscripcion',                      to: 'orders#new',                 via: [:get,:post], as: :new_order
+  match 'inscrpicion-finalizadda',                      to: 'mainweb#site_successfull_payment',                 via: [:get], as: :site_successfull
+
+
+  
+  scope '/users' do
+    match 'orders/:id', to: 'orders#show', via: :get, as: :user_order
+    match 'orders', to: 'orders#index', via: :get, as: :user_orders
+
+  end
+
   scope '/admin' do
     resources :legal_texts
     resources :contacts
     resources :products
+    resources :orders
     resources :users
+    resources :data_enterprises
     resources :categories do 
       resources :products
     end
