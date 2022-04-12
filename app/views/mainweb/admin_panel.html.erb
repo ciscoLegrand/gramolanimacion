@@ -59,6 +59,11 @@
                 description:  'Plantillas de emails',
                 path: email_base_templates_path,
               ))%>
+              <%= render(CardAdminComponent.new( 
+                title: 'Empresa',
+                description:  'Datos de empresa',
+                path: edit_data_enterprise_path(@data_enterprise),
+              ))%>
               </div>
             </div>
           </div>
