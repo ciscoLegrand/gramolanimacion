@@ -1,15 +1,27 @@
-User.create(email: 'test@test.com', password: 'test123', role: 'admin')
-cat1 = Category.create!(name: "Cursos",description: Faker::Lorem.paragraphs(number: 3))
-cat2 = Category.create!(name: "Campamentos",description: Faker::Lorem.paragraphs(number: 3))
-cat3 = Category.create!(name: "Actividades",description: Faker::Lorem.paragraphs(number: 3))
+User.create(email: 'cisco.glez@gmail.com', password: 'test123', role: 'admin')
+DataEnterprise.create(commercial_name: 'gramokids', business_name: 'la gramola disco')
+cat1 = Category.create!(
+  name: "Cursos",
+  description: Faker::Lorem.paragraphs(number: 3) unless Rails.env.production?
+)
+cat2 = Category.create!(
+  name: "Campamentos",
+  description: Faker::Lorem.paragraphs(number: 3) unless Rails.env.production?
+)
+cat3 = Category.create!(
+  name: "Actividades",
+  description: Faker::Lorem.paragraphs(number: 3) unless Rails.env.production?
+)
 9.times do |i|
+  n = i + 1
+  cat = Category.find(rand(1..3))
   Product.create!(
-    category_id: Category.find(rand(1..3)).id,
-    name: "Product #{i}",
+    category_id: cat.id,
+    name: "Prod#{cat.name}#{n}",
     initial_price: rand(1..5) * 100,
-    discount: rand(1..25),
-    description: Faker::Lorem.paragraph,
-    position: i
+    discount: rand(0..20),
+    position: n,
+    description: Faker::Lorem.paragraph unless Rails.env.production?
   )
 end
 
