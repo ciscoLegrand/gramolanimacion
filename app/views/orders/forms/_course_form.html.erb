@@ -3,11 +3,17 @@
   <div class="bg-gradient-to-b from-blue-800 to-blue-600 h-96 w-full"></div>
   <div class="max-w-5xl mx-auto px-6 sm:px-6 lg:px-8 mb-12">
     <div class="bg-white w-full shadow-xl rounded p-8 sm:p-12 -mt-72">
-      <p class="text-3xl font-bold leading-7 text-center"><%= @product.name %></p>
+      <p class="text-3xl font-bold leading-7 text-center">Formulario inscripción <%= @product.name %></p>
       <%= form_with(model: @order,local: true, data: {turbo: false, controller:"check_buttons"} ) do |f| %>
         <!-- render rails error form  --->
-        <%= f.hidden_field :product_id, value: @product.id %>
+        <%= f.hidden_field :cart_id, value: @cart.id %>        
         <%= f.hidden_field :user_id, value: current_user.id if user_signed_in? %>
+        <%= f.hidden_field :tutor_name, value: "a" %>
+        <%= f.hidden_field :tutor_last_name, value: "a" %>
+        <%= f.hidden_field :tutor_dni, value: "a" %>
+        <%= f.hidden_field :tutor_phone, value: "a" %>
+        <%= f.hidden_field :birthdate, value: "a" %>  
+        <%= f.hidden_field :total_amount, value: 0 %>
         <div class="md:flex items-center mt-12">
           <div class="w-full md:w-1/2 flex flex-col">
             <%= f.label :name, class: 'label font-semibold leading-none' %>
@@ -18,18 +24,22 @@
             <%= f.text_field :last_name, class: 'textfield leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200' %>
           </div>
         </div>
-        <div class="md:flex items-center mt-12">
-          <div class="w-full md:w-1/3 flex flex-col">
+        <div class="md:flex flex-wrap items-center mt-12">
+          <div class="w-full md:w-1/2 flex flex-col">
             <%= f.label :email, class: 'label font-semibold leading-none' %>
             <%= f.text_field :email, class: 'textfield leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200' %>
           </div>
-          <div class="w-full md:w-1/3 flex flex-col md:ml-6 md:mt-0 mt-4">
+          <div class="w-full md:w-1/2 flex flex-col md:ml-6 md:mt-0 mt-4">
             <%= f.label :phone, class: 'label font-semibold leading-none' %>
             <%= f.text_field :phone, class: 'textfield leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200' %>    
           </div>
-          <div class="w-full md:w-1/3 flex flex-col md:ml-6 md:mt-0 mt-4">
-            <%= f.label :phone, class: 'label font-semibold leading-none' %>
-            <%= f.text_field :phone, class: 'textfield leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200' %>    
+          <div class="w-full md:w-1/2 flex flex-col md:ml-6 md:mt-0 mt-4">
+            <%= f.label :dni, class: 'label font-semibold leading-none' %>
+            <%= f.text_field :dni, class: 'textfield leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200' %>    
+          </div>
+          <div class="w-full md:w-1/2 flex flex-col md:ml-6 md:mt-0 mt-4">
+            <%= f.label :birthdate , class: 'label font-semibold leading-none' %>
+            <%= f.text_field :birthdate, class: 'textfield leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200' %>    
           </div>
         </div>
         <div class="md:flex items-center mt-12 flex-wrap justify-between">
@@ -56,21 +66,21 @@
         </div>
         <div class="md:flex items-center mt-12" >
           <div class="w-full md:w-1/2 flex flex-col md:ml-6 md:mt-0 mt-4">
-            <%= f.label :association, class: 'label font-semibold leading-none' %>
+            <%#= f.label :association, class: 'label font-semibold leading-none' %>
             <div class="w-full flex">
               <div class="form-check form-check-inline">
-                <%= f.radio_button :yes, true, class: '', data: {target: 'radioSelector', action: 'click->check_buttons#change_status'} %>
-                <%= f.label :yes, class:"form-check-label inline-block text-gray-800"%>
+                <%#= f.radio_button :yes, true, class: '', data: {target: 'radioSelector', action: 'click->check_buttons#change_status'} %>
+                <%#= f.label :yes, class:"form-check-label inline-block text-gray-800"%>
               </div>
               <div class="form-check form-check-inline">
-                <%= f.radio_button :no, false, class: 'form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white  mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer', data: {target: 'radioSelector', action: 'zheck_buttons#change_status'} %>
-                <%= f.label :no, class:"form-check-label inline-block text-gray-800"%>
+                <%#= f.radio_button :no, false, class: 'form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white  mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer', data: {target: 'radioSelector', action: 'zheck_buttons#change_status'} %>
+                <%#= f.label :no, class:"form-check-label inline-block text-gray-800"%>
               </div>
             </div>
           </div>
           <div class="w-full md:w-1/2 flex flex-col md:ml-6 md:mt-0 mt-4 form-check hidden">
-            <%= f.label :association_name, class: 'label font-semibold leading-none' %>
-            <%= f.text_field :association_name, class: 'textfield leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200' %>
+            <%#= f.label :association_name, class: 'label font-semibold leading-none' %>
+            <%#= f.text_field :association_name, class: 'textfield leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200' %>
           </div>
         </div>
         <div class="w-full flex flex-col mt-8">

@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :set_categories
+  before_action :set_cart
   before_action :authenticate_user!
   add_flash_types :success, :error, :alert, :info, :notice
   before_action :configure_permitted_parameters, if: :devise_controller?
@@ -15,6 +16,11 @@ class ApplicationController < ActionController::Base
     end
 
     def set_cart
-      @cart = Cart.find(session[:cart_id]) if session[:cart_id].present?
+      if session[:cart_id].present?
+        @cart = Cart.find(session[:cart_id])
+      else 
+        @cart = Cart.create(ip: request.remote_ip)
+        session[:cart_id] = @cart.id
+      end
     end
 end

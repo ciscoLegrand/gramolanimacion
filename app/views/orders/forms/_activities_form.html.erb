@@ -1,0 +1,99 @@
+<!-- component -->
+<div class="w-full mt-6">
+  <div class="bg-gradient-to-b from-blue-800 to-blue-600 h-96 w-full"></div>
+  <div class="max-w-5xl mx-auto px-6 sm:px-6 lg:px-8 mb-12">
+    <div class="bg-white w-full shadow-xl rounded p-8 sm:p-12 -mt-72">
+      <p class="text-3xl font-bold leading-7 text-center">Formulario inscripción <%= @product.name %></p>
+      <%= form_with(model: @order,local: true, data: {turbo: false, controller:"check_buttons"} ) do |f| %>
+        <!-- render rails error form  --->
+        <div class="md:flex items-center mt-12">
+          <h3 class="w-full">Datos do participante</h3><br>
+          <div class="w-full md:w-1/2 flex flex-col">
+            <%= f.label :name, class: 'label font-semibold leading-none' %>
+            <%= f.text_field :name, class: 'textfield leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200' %>
+          </div>
+          <div class="w-full md:w-1/2 flex flex-col md:ml-6 md:mt-0 mt-4">
+            <%= f.label :last_name, class: 'label font-semibold leading-none' %>
+            <%= f.text_field :last_name, class: 'textfield leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200' %>
+          </div>
+        </div>
+
+        <div class="md:flex flex-wrap items-center mt-12">
+          <div class="w-full md:w-1/2 flex flex-col">
+            <%= f.label :email, class: 'label font-semibold leading-none' %>
+            <%= f.text_field :email, class: 'textfield leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200' %>
+          </div>
+          <div class="w-full md:w-1/2 flex flex-col md:ml-6 md:mt-0 mt-4">
+            <%= f.label :phone, class: 'label font-semibold leading-none' %>
+            <%= f.text_field :phone, class: 'textfield leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200' %>    
+          </div>
+
+          <div class="w-full md:w-1/2 flex flex-col md:ml-6 md:mt-0 mt-4">
+            <%= f.label :birthdate , class: 'label font-semibold leading-none' %>
+            <%= f.text_field :birthdate, class: 'textfield leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200' %>    
+          </div>
+        </div>
+
+        <div class="w-full flex flex-col mt-8">
+          <%= f.label :content, class: 'label font-semibold leading-none' %>          
+          <%= f.rich_text_area :content, class: 'h-40 text-base leading-none text-gray-900 p-3 focus:oultine-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200' %>
+        </div>
+        <%= f.hidden_field :cart_id, value: @cart.id %>        
+        <%= f.hidden_field :user_id, value: current_user.id if user_signed_in? %>
+        <%= f.hidden_field :total_amount, value: 0 %>
+
+        <div class="md:flex items-center mt-12">
+          <h3 class="w-full">Datos dos Titores</h3><br>
+          <div class="w-full md:w-1/2 flex flex-col">
+            <%= f.label :tutor_name, class: 'label font-semibold leading-none' %>
+            <%= f.text_field :tutor_name, class: 'textfield leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200' %>
+          </div>
+          <div class="w-full md:w-1/2 flex flex-col md:ml-6 md:mt-0 mt-4">
+            <%= f.label :tutor_last_name, class: 'label font-semibold leading-none' %>
+            <%= f.text_field :tutor_last_name, class: 'textfield leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200' %>
+          </div>
+          <div class="w-full md:w-1/2 flex flex-col md:ml-6 md:mt-0 mt-4">
+            <%= f.label :tutor_dni, class: 'label font-semibold leading-none' %>
+            <%= f.text_field :tutor_dni, class: 'textfield leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200' %>    
+          </div>
+
+          <div class="w-full md:w-1/2 flex flex-col md:ml-6 md:mt-0 mt-4">
+            <%= f.label :tutor_phone, class: 'label font-semibold leading-none' %>
+            <%= f.text_field :tutor_phone, class: 'textfield leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200' %>    
+          </div>
+          <div class="w-full md:w-1/2 flex flex-col md:ml-6 md:mt-0 mt-4">
+            <%= f.label :email, class: 'label font-semibold leading-none' %>
+            <%= f.text_field :email, class: 'textfield leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200' %>    
+          </div>
+        </div>
+
+        <div class="md:flex items-center mt-12 flex-wrap justify-between">
+          <h3 class="w-full">Dirección</h3><br>
+          <div class="w-full md:w-full flex flex-col">
+            <%= f.label :address, class: 'label font-semibold leading-none' %>
+            <%= f.text_field :address, class: 'textfield leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200' %>
+          </div>
+          <div class="w-full md:w-1/2 flex flex-col  md:mt-0 mt-4">
+            <%= f.label :city, class: 'label font-semibold leading-none' %>
+            <%= f.text_field :city, class: 'textfield leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200' %>    
+          </div>
+          <div class="w-full md:w-1/2 flex flex-col  md:mt-0 mt-4">
+            <%= f.label :zip, class: 'label font-semibold leading-none' %>
+            <%= f.text_field :zip, class: 'textfield leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200' %>    
+          </div>
+          <div class="w-full md:w-1/2 flex flex-col  md:mt-0 mt-4">
+            <%= f.label :region, class: 'label font-semibold leading-none' %>
+            <%= f.text_field :region, class: 'textfield leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200' %>    
+          </div>
+          <div class="w-full md:w-1/2 flex flex-col  md:mt-0 mt-4">
+            <%= f.label :country, class: 'label font-semibold leading-none' %>
+            <%= f.text_field :country, class: 'textfield leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200' %>    
+          </div>
+        </div>
+        <div class="flex items-center justify-center w-full">
+          <%= f.submit nil, class: 'mt-9 font-semibold leading-none text-white py-4 px-10 bg-blue-700 rounded hover:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 focus:outline-none' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
