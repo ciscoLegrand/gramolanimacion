@@ -1,5 +1,5 @@
 class MainwebController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[index site_category site_product site_legal_text cookies]
+  skip_before_action :authenticate_user!, only: %i[index site_category site_product site_cart site_successfull_payment site_legal_text cookies]
   before_action :set_category, only: %i[site_category]
 
   def index
@@ -18,6 +18,10 @@ class MainwebController < ApplicationController
   end
 
   def site_cart
+    @user = current_user
+  end
+
+  def site_successfull_payment
     
   end
 
@@ -25,10 +29,14 @@ class MainwebController < ApplicationController
     @legal_text = LegalText.friendly.find(params[:legal_text_id])
   end
 
+  def users_panel 
+  end
+
   def profile 
   end
 
   def admin_panel
+    @data_enterprise = DataEnterprise.first
   end
 
   def cookies

@@ -32,6 +32,7 @@ class ProductsController < ApplicationController
                                 ) 
         }
         format.html { 
+          @product.update!(hidden:false) if @product.images.first.present?
           redirect_to products_path, 
           success: "product was successfully created." 
         }

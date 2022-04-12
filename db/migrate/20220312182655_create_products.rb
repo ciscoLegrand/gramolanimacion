@@ -14,6 +14,7 @@ class CreateProducts < ActiveRecord::Migration[7.0]
       t.string  :category_name
       t.boolean :swiper 
       t.boolean :highlight
+      t.boolean :hidden, default: true
       t.integer :position
       t.string :slug, unique: true, null: false
       t.timestamps
