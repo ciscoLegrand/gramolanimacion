@@ -1,4 +1,16 @@
 <section class="w-2/3 text-gray-700 body-font overflow-hidden bg-white my-10 p-10">
-gracias por inscribirte!
-Recuerda cambiar la contraseña: <%#= @user.password %>
+Gracias por inscribirte!
+Recuerda que para completar la inscripción debes hacer el ingreso en el número de cuenta <span class="text-indigo-500 text-lg"><%= DataEnterprise.first.wide_transfer %></span>
+Y adjuntar el recibo en tu inscrpción. <br>
+Puedes consultar los datos de la inscripción a través de tu 
+<% if user_signed_in? %>
+  <%= link_to 'cuenta de usuario', user_orders_path, class:"text-xl text-indigo-500 border-t-indigo-500 border-b-indigo-500"%>.
+<% else %>
+  <%= link_to 'cuanta de usuario', login_path,  
+          data: { turbo_frame: 'modal' }, 
+          class:'text-xl text-indigo-500 border-t-indigo-500 border-b-indigo-500' %> 
+<% end %>
+<br>
+<%= link_to 'Inicio', root_path, class:'button-primary' %>
+
 </section>

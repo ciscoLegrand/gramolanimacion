@@ -13,7 +13,7 @@ export default class extends Controller {
       this.appendGoogleAnalyticsScript()
     }
     if (Cookies.get('allow_cookies') != undefined) {
-      this.element.classList.add('invisible') 
+      this.element.classList.add('hidden') 
     }
 
   }
@@ -30,7 +30,7 @@ export default class extends Controller {
     })
     this.appendGoogleAnalyticsScript()
 
-    this.element.classList.add('invisible')
+    this.element.classList.add('hidden')
   }
 
   rejectCookies(e) {
@@ -39,7 +39,7 @@ export default class extends Controller {
     Cookies.set('allow_cookies', 'no',{
       expires: 7
     })
-    this.element.classList.add('invisible')
+    this.element.classList.add('hidden')
   }
 
   // append code from google analytics

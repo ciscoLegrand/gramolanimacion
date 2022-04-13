@@ -13,35 +13,49 @@
       <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
         <h2 class="text-sm title-font text-gray-500 tracking-widest"><%= @product.category_name %></h2>
         <h1 class="text-gray-900 text-3xl title-font font-medium mb-1"><%= @product.name %></h1>
-        <!---review_component-->
-        <div class="flex mb-4">
-          <span class="flex items-center">
-            <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-red-500" viewBox="0 0 24 24">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-            </svg>
-            <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-red-500" viewBox="0 0 24 24">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-            </svg>
-            <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-red-500" viewBox="0 0 24 24">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-            </svg>
-            <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-red-500" viewBox="0 0 24 24">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-            </svg>
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-red-500" viewBox="0 0 24 24">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-            </svg>
-            <span class="text-gray-600 ml-3">4 Reviews</span>
-          </span>
-          <!---end review_component-->
-          <!---social_media_component-->
-          <span class="flex ml-3 pl-3 py-2 border-l-2 border-gray-200">
-            <%= render SocialIconComponent.new(icon: 'ico-facebook.svg', size: '32', color: 'bg-indigo-500', href: root_path) %>
-            <%= render SocialIconComponent.new(icon: 'ico-twitter.svg', size: '32', color: 'bg-blue-500', href: products_path) %>
-            <%= render SocialIconComponent.new(icon: 'ico-message.svg', size: '32', color: 'bg-red-500', href: categories_path) %>
-          </span>
-          <!---end social_medida_component--->
+        <div class="flex mt-6 items-center p-5 border-t-2 border-b-2 border-gray-200 my-5">
+          <!---description_component-->
+          <div class="flex ml-6 items-center">
+            <div class="relative" data-controller="dropdown">
+              <div class="text-gray-600 text-xl font-medium cursor-pointer " data-action="click->dropdown#display_product_features" aria-haspopup="true" aria-controls="dropdown-features" >Description</div>
+              <div data-dropdown-target="productfeatures"  class="hidden flex justify-center">
+                <%= @product.description %>
+              </div>
+            </div>
+          </div>
+          <!--end description_component--->
         </div>
+        <!---review_component-->
+        <% if 1 == 0 %>
+          <div class="flex mb-4">
+            <span class="flex items-center">
+              <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-red-500" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+              </svg>
+              <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-red-500" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+              </svg>
+              <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-red-500" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+              </svg>
+              <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-red-500" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+              </svg>
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-red-500" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+              </svg>
+              <span class="text-gray-600 ml-3">4 Reviews</span>
+            </span>
+            <!---end review_component-->
+            <!---social_media_component-->
+            <span class="flex ml-3 pl-3 py-2 border-l-2 border-gray-200">
+              <%= render SocialIconComponent.new(icon: 'ico-facebook.svg', size: '32', color: 'bg-indigo-500', href: root_path) %>
+              <%= render SocialIconComponent.new(icon: 'ico-twitter.svg', size: '32', color: 'bg-blue-500', href: products_path) %>
+              <%= render SocialIconComponent.new(icon: 'ico-message.svg', size: '32', color: 'bg-red-500', href: categories_path) %>
+            </span>
+            <!---end social_medida_component--->
+          </div>
+        <% end %>
         <!---price_buy_component-->
         <div class="flex">
           <span class="title-font font-medium text-2xl text-gray-900"><%= number_to_currency @product.price %></span>
@@ -54,18 +68,6 @@
           </button>
         </div>
         <!--end price_buy_component --->
-        <div class="flex mt-6 items-center p-5 border-t-2 border-b-2 border-gray-200 mb-5">
-          <!---description_component-->
-          <div class="flex ml-6 items-center">
-            <div class="relative" data-controller="dropdown">
-              <div class="text-gray-600 text-xl font-medium cursor-pointer " data-action="click->dropdown#display_product_features" aria-haspopup="true" aria-controls="dropdown-features" >Description</div>
-              <div data-dropdown-target="productfeatures"  class="hidden flex justify-center">
-                <%= @product.description %>
-              </div>
-            </div>
-          </div>
-          <!--end description_component--->
-        </div>
       </div>
     </div>
   </div>

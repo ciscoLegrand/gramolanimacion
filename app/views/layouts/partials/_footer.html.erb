@@ -1,9 +1,14 @@
     <footer class="border-t border-gray-200 h-40 py-4 relative mt-8">
       <div class="container flex flex-col flex-wrap  px-4 mx-auto md:items-center lg:items-start md:flex-row md:flex-nowrap">
-        <div class="flex-shrink-0 w-64 mx-auto text-center md:mx-0 md:text-left" >
-          <%= link_to inline_svg_tag('ciscolegrandlogo.svg', size:'80px',class: 'self-center text-lg font-semibold whitespace-nowrap dark:text-white'), root_path , class:"flex items-center justify-center text-4xl font-bold text-blue-700 md:justify-start"%>
-        </div>
-        <div class="justify-between w-full mt-4 text-center lg:flex">          
+        <div class="justify-between w-full mt-4 text-center lg:flex">  
+          <div class="w-full px-4 lg:w-1/3 md:w-1/2">        
+            <div class="flex-shrink-0 w-64 mx-auto text-center md:mx-0 md:text-left" >
+              <%= link_to inline_svg_tag('ciscolegrandlogo.svg', size:'80px',class: 'self-center text-lg font-semibold whitespace-nowrap dark:text-white'), root_path , class:"flex items-center justify-center text-4xl font-bold text-blue-700 md:justify-start"%>
+              <p class="text-base text-gray-400">
+                Desarrollado por <span class="text-indigo-500">creaDix</span> <%= Time.now.year %>
+              </p>
+            </div>
+          </div>
           <div class="w-full px-4 lg:w-1/3 md:w-1/2">
             <h2 class="mb-2 font-bold tracking-widest text-gray-900">
               Apartados legales
@@ -12,11 +17,19 @@
               <%= link_to legaltext.title, site_legal_text_path(legaltext) %>
             <% end %>
           </div>
+          <div class="w-full px-4 lg:w-1/3 md:w-1/2">
+            <h2 class="mb-2 font-bold tracking-widest text-gray-900">
+              Síguenos
+            </h2>
+            <!---social_media_component-->
+            <span class="flex justify-center ml-3 pl-3 py-2 border-l-2 border-gray-200">
+              <%= render SocialIconComponent.new(icon: 'ico-facebook.svg', size: '32', color: 'bg-indigo-500', href: DataEnterprise.first.facebook_url) if DataEnterprise.first.facebook_url.present? %>
+              <%= render SocialIconComponent.new(icon: 'ico-twitter.svg', size: '32', color: 'bg-blue-500', href: DataEnterprise.first.twitter_url) if DataEnterprise.first.twitter_url.present? %>
+              <%= render SocialIconComponent.new(icon: 'ico-instagram.svg', size: '22', color: 'bg-red-500', href: DataEnterprise.first.instagram_url) if DataEnterprise.first.instagram_url.present? %>
+              <%= render SocialIconComponent.new(icon: 'ico-message.svg', size: '32', color: 'bg-red-500', href: DataEnterprise.first.gramoladisco_url) if DataEnterprise.first.gramoladisco_url.present? %>
+            </span>
+            <!---end social_medida_component--->
+          </div>
         </div>
-      </div>
-      <div class="flex justify-center">
-        <p class="text-base text-gray-400">
-          All rights reserved by creaDix <%= Time.now.year %>
-        </p>
       </div>
     </footer>

@@ -42,27 +42,22 @@
           </div>
           <div class="linkmannaging hidden" id="profile" data-tabs-target="tabContent">
             <div class="max-w-sm w-full lg:max-w-full lg:flex justify-center flex-wrap">
-                <%= render(CardAdminComponent.new( 
-                  title: 'Productos',
-                  description:  'Agregar, editar y eliminar productos',
-                  path: products_path,
-                ))%>
-
-                <%= render(CardAdminComponent.new( 
-                  title: 'Categorias',
-                  description:  'Agregar, editar y eliminar categorias',
-                  path: categories_path,
-                ))%>
-
               <%= render(CardAdminComponent.new( 
-                title: 'Emails',
-                description:  'Plantillas de emails',
-                path: email_base_templates_path,
+                title: 'Productos',
+                description:  'Agregar, editar y eliminar productos',
+                path: products_path,
               ))%>
+
               <%= render(CardAdminComponent.new( 
-                title: 'Empresa',
-                description:  'Datos de empresa',
-                path: edit_data_enterprise_path(@data_enterprise),
+                title: 'Categorias',
+                description:  'Agregar, editar y eliminar categorias',
+                path: categories_path,
+              ))%>
+
+              <%= render(CardAdminComponent.new( 
+                title: 'Inscripciones',
+                description:  'Gestionar inscripciones',
+                path: orders_path,
               ))%>
               </div>
             </div>
@@ -79,6 +74,18 @@
                 title: 'Textos legales',
                 description:  'Agregar, editar y eliminar textos legales',
                 path: legal_texts_path,
+              ))%>
+
+              <%= render(CardAdminComponent.new( 
+                title: 'Empresa',
+                description:  'Datos de empresa',
+                path: edit_data_enterprise_path(@data_enterprise),
+              ))%>
+
+              <%= render(CardAdminComponent.new( 
+                title: 'Emails',
+                description:  'Plantillas de emails',
+                path: email_base_templates_path,
               ))%>
             </div>
           </div>
