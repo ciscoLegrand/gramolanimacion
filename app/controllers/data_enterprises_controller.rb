@@ -17,6 +17,6 @@ class DataEnterprisesController < ApplicationController
     end
 
     def data_enterprise_params
-      params.require(:data_enterprise).permit(:commercial_name, :business_name, :nif, :meta_title, :meta_description, :url, :about, :logo)
+      params.require(:data_enterprise).permit(:commercial_name, :business_name, :nif, :wide_transfer, :meta_title, :meta_description, :url, :about, :facebook_url, :twitter_url, :instagram_url, :bodasnet_url, :gramoladisco_url, :logo)
     end
 end
