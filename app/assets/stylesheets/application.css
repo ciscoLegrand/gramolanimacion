@@ -15,8 +15,12 @@
  */
 
 
- main.container {
+ main#main {
    margin-top: 50px;
    margin-bottom: 50px;
    min-height: calc(100vh - 360px);
+ }
+
+ #modal {
+   z-index: 110;
  }
