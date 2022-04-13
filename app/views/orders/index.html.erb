@@ -10,9 +10,9 @@
           <% row.actions do %>
             <div class="flex flex-row justify-end">
               <% if action_name != "show" %>
-                <%= link_to "Show", order,data: { turbo_frame: 'modal' }, class: "button-primary mr-4" %>
-                <%= link_to 'Edit', edit_order_path(order), data: { turbo_frame: 'modal' }, class: "button-primary mr-4" %>
-                <%= button_to 'Delete', order_path(order), method: :delete, class: 'button-decline mr-4' %>
+                <%= link_to inline_svg_tag('icons/ico-eye.svg', size: '32'), order, class: "mr-4" %>
+                <%= link_to inline_svg_tag('icons/ico-edit.svg', size: '32'), edit_order_path(order), class: "mr-4" %>
+                <%= button_to inline_svg_tag('icons/ico-trash.svg', size: '32'), order_path(order), method: :delete, class: 'mr-4' if current_user.admin? %>
               <% end %>
             </div>
           <% end %>

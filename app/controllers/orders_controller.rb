@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
   before_action :set_order, only: %i[ update destroy show]
   before_action :set_product, only: %i[new]
   before_action :set_cart, only: %i[new create]
+  
   def index 
     @orders   =   Order.all if current_user.admin?
     @orders   = current_user.orders if current_user.user?
@@ -11,6 +12,7 @@ class OrdersController < ApplicationController
   end
   
   def show 
+    @user = User.find_by(email: @order.email)
   end
 
   def new 
@@ -61,6 +63,8 @@ class OrdersController < ApplicationController
         )
       @order.update(total_amount: oi.amount, discount: 0)
     end
+    OrderMailer.user_order(@order).deliver
+    OrderMailer.admin_order(@order).deliver
     session[:cart_id] = nil
     redirect_to site_successfull_path, success: "Te has inscrito correctamente. #{msg}"
   end

@@ -1,1 +1,16 @@
-<%= @order.product_name%>
+<section class="w-4/5 min-h-screen">
+  <div class="flex justify-between">
+    <div class="w-full block p-6 rounded-lg shadow-lg bg-white"> 
+      <h2>User data</h2>
+      <div class="form-group mb-6">
+        <div class="label">Nombre</div>
+        <div class= 'textfield text-2xl', readonly: true><%=  @user.name %></div>
+      </div>
+    </div>
+    <div class="w-full block p-6 rounded-lg shadow-lg bg-white"> 
+      <h2>Order data</h2>
+      <%= @order.id %>
+      <%= @order.product_name %>
+    </div>
+  </div>
+</section>
