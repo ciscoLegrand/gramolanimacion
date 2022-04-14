@@ -58,12 +58,12 @@ class OrdersController < ApplicationController
     end
     if @order.persisted?
       cart_item = CartItem.find_by(cart_id: @order.cart_id)
-        oi = OrderItem.create!(
-          order_id: @order.id,
-          product_id: cart_item.product_id,
-          quantity: cart_item.quantity,
-          amount: cart_item.amount,
-        )
+      oi = OrderItem.create!(
+        order_id: @order.id,
+        product_id: cart_item.product_id,
+        quantity: cart_item.quantity,
+        amount: cart_item.amount,
+      )
       @order.update(total_amount: oi.amount, discount: 0)
     end
     OrderMailer.user_order(@order, pass).deliver
