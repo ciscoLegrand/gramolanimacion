@@ -1,14 +1,14 @@
-<script>
-// location.reload();
-</script>
-<nav class="border-gray-200 px-2 sm:px-4 rounded dark:bg-gray-800 shadow-lg">
+<nav class="border-gray-200 px-2 sm:px-4 rounded dark:bg-gray-800 shadow-lg" data-controller="dropdown">
   <div class="w-4/5 flex flex-wrap justify-between items-center mx-auto py-10">
     <% if DataEnterprise.first&.logo.present? %>
       <%= link_to image_tag(url_for(DataEnterprise.first.logo), width:'80px',class: 'self-center text-lg font-semibold whitespace-nowrap dark:text-white'), root_path, class: 'flex'%>  
     <% else %>
       <%= link_to inline_svg_tag('ciscolegrandlogo.svg', size:'80px',class: 'self-center text-lg font-semibold whitespace-nowrap dark:text-white'), root_path, class: 'flex'%>
     <% end %>
-    <div class="  justify-between items-center w-full md:flex md:w-auto md:order-1" id="mobile-menu-2" data-controller="launch-modal">
+      <div id="menu-mobile" class="block" data-action="click->dropdown#display_menu" >
+        <%= inline_svg_tag('icons/ico-menu.svg', size: '32')%>
+      </div>
+    <div class="justify-between items-center w-full md:flex md:w-auto md:order-1 hidden xs:block" id="mobile-menu-2" data-controller="launch-modal" data-dropdown-target="mobilemenu" >
       <ul class="flex flex-col items-center mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
         <li class="hover:scale-125 transition-all duration-500"> <%= link_to 'Home', root_path, class:'text-black-600 mx-2 sm:mx-4 capitalize tracking-wide hover:border-b-4 hover:border-indigo-500  hover:text-indigo-500 transition-all duration-500' %> </li>
         <!--categories-->
