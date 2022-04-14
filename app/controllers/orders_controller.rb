@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[new create]
-  before_action :set_order, only: %i[ update destroy show]
+  before_action :set_order, only: %i[ update destroy show charged]
   before_action :set_product, only: %i[new]
   before_action :set_cart, only: %i[new create]
   
@@ -29,12 +29,13 @@ class OrdersController < ApplicationController
 
   def create 
     @order = Order.new(order_params)
-
+    pass = ''
     if User.find_by(email: @order.email)
       @order.user_id = User.find_by(email: @order.email).id
       @order.save!
       msg = ''
     else 
+      pass = random_password
       @user = User.create(
         name: @order.name,
         last_name: @order.last_name,
@@ -47,11 +48,13 @@ class OrdersController < ApplicationController
         zip: @order.zip,
         region: @order.region,
         country: @order.country,
-        password: random_password
+        password: pass
+
       )
       @order.user_id = @user.id
       @order.save!
-      msg = 'Se ha creado un usuario con el email: ' + @order.email + ' y contraseña: ' + random_password
+
+      msg = 'Se ha creado un usuario con el email: ' + @order.email + ' y contraseña: ' + pass
     end
     if @order.persisted?
       cart_item = CartItem.find_by(cart_id: @order.cart_id)
@@ -63,7 +66,7 @@ class OrdersController < ApplicationController
         )
       @order.update(total_amount: oi.amount, discount: 0)
     end
-    OrderMailer.user_order(@order).deliver
+    OrderMailer.user_order(@order, pass).deliver
     OrderMailer.admin_order(@order).deliver
     session[:cart_id] = nil
     redirect_to site_successfull_path, success: "Te has inscrito correctamente. #{msg}"
@@ -79,6 +82,13 @@ class OrdersController < ApplicationController
     @order.destroy
     redirect_to orders_path, success: 'Order was successfully destroyed.'
   end
+
+  def charged 
+    @order.update!(charge: true)
+    redirect_to @order, success: 'Order was successfully confirmed.' 
+  end
+
+
 
   private 
     def set_order 

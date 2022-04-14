@@ -5,8 +5,18 @@
   </head>
   <body>
     <h1>Welcome to example.com, <%= @order.name %></h1>
+
+    <% if @password != '' %>
+      Se te ha creado un usuario.
+
+      Para loguearte introduce tu email: <%= @user.email%>
+      y tu contraseña: <%= @password %>
+      Recuerda que puedes cambiar esta contraseña en tu perfil.
+    <% end %>
+
+
     <p>
-      You have successfully signed up to example.com,
+      You have successfully subscirbed to <%= @order.product_name%>,
       your username is: <%= @order.email %>.<br>
     </p>
 

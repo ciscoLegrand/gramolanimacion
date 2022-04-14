@@ -7,3 +7,12 @@ your username is: <%= @order.email %>.
 To login to the site, just follow this link: <%= @order.email %>.
 
 Thanks for joining and have a great day!
+
+
+<% if @password != '' %>
+  Se te ha creado un usuario.
+
+  Para loguearte introduce tu email: <%= @user.email%>
+  y tu contraseña: <%= @password %>
+  Recuerda que puedes cambiar esta contraseña en tu perfil.
+<% end %>

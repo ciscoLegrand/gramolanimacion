@@ -5,12 +5,24 @@
       <div class="form-group mb-6">
         <div class="label">Nombre</div>
         <div class= 'textfield text-2xl', readonly: true><%=  @user.name %></div>
+        <div class= 'textfield text-2xl', readonly: true><%=  @user.last_name %></div>
       </div>
     </div>
     <div class="w-full block p-6 rounded-lg shadow-lg bg-white"> 
-      <h2>Order data</h2>
-      <%= @order.id %>
+      <%= link_to 'Confirmar pedido', charged_order_path(@order), class: 'button-primary' if current_user.admin? && !@order.charge %>
+      <h2 class="<%= @order.charge ? 'bg-green-500 text-white' : 'bg-white' %>">Order data</h2>
+      <%= @order.id %> <br>
       <%= @order.product_name %>
+      <br>
+      Files 
+      <div class="flex justify-between">
+        <div class="w-full sm:w-1/2">dni_front
+          <%= image_tag(url_for(@order.dni_front)) %>
+        </div>
+        <div class="w-full sm:w-1/2">dni_back
+          <%= image_tag(url_for(@order.dni_back)) %>
+        </div>
+      </div>
     </div>
   </div>
 </section>

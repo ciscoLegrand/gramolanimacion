@@ -23,7 +23,9 @@ Rails.application.routes.draw do
     resources :legal_texts
     resources :contacts
     resources :products
-    resources :orders
+    resources :orders do 
+      get 'charged', on: :member
+    end
     resources :users
     resources :data_enterprises
     resources :categories do 

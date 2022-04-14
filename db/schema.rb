@@ -152,6 +152,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_13_152337) do
     t.bigint "cart_id", null: false
     t.float "total_amount", null: false
     t.float "discount", default: 0.0, null: false
+    t.boolean "charge", default: false, null: false
     t.bigint "user_id", null: false
     t.string "name", default: "", null: false
     t.string "last_name", default: "", null: false
@@ -199,6 +200,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_13_152337) do
     t.string "category_name"
     t.boolean "swiper"
     t.boolean "highlight"
+    t.boolean "hidden", default: true
     t.integer "position"
     t.string "slug", null: false
     t.datetime "created_at", null: false
