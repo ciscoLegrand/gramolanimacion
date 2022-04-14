@@ -1,7 +1,7 @@
 <section class="w-4/5 text-gray-700 body-font overflow-hidden bg-white my-10 p-10">
-  <div class="flex bg-white" style="height:600px;">
+  <div class="flex bg-white" >
     <div class="flex items-center text-center lg:text-left px-8 md:px-12 lg:w-1/2">
-      <div class="relative bg-white rounded-r-3xl z-10" style="left:50%">
+      <div class="lg:relative bg-white rounded-r-3xl z-10" style="left:50%">
         <% if DataEnterprise.first&.logo.present? %>
         <figure class="w-full flex justiffy-center">
           <%= link_to image_tag(url_for(DataEnterprise.first.logo), width:'100%',class: 'self-center text-lg font-semibold whitespace-nowrap dark:text-white'), root_path, class: 'flex'%>  
@@ -15,12 +15,10 @@
         </div>
       </div>
     </div>
-    <div class="hidden lg:block lg:w-1/2" style="clip-path:polygon(10% 0, 100% 0%, 100% 100%, 0 100%)">
+          
+    <div class=" lg:w-1/2" style="clip-path:polygon(10% 0, 100% 0%, 100% 100%, 0 100%)">
+      <%= image_tag('espuma.jpg')%>
 
-    <%= image_tag('espuma.jpg')%>
-      <div class="h-full object-cover" style="background-image: url(espuma.jpg)">
-        <div class="h-full bg-black opacity-25"></div>
-      </div>
     </div>
   </div>
 </section>
