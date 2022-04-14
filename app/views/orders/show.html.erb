@@ -16,11 +16,11 @@
       <br>
       Files 
       <div class="flex justify-between">
-        <div class="w-full sm:w-1/2">dni_front
-          <%= image_tag(url_for(@order.dni_front)) %>
+        <div class="w-full sm:w-1/2">dni_front <br>
+          <%= @order.dni_front.present? ? image_tag(url_for(@order.dni_front)) : 'Aun se han subido archivos'%>
         </div>
-        <div class="w-full sm:w-1/2">dni_back
-          <%= image_tag(url_for(@order.dni_back)) %>
+        <div class="w-full sm:w-1/2">dni_back <br>
+          <%= @order.dni_back.present? ? image_tag(url_for(@order.dni_back)) : 'Aun se han subido archivos' %>
         </div>
       </div>
     </div>
