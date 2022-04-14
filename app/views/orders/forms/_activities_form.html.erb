@@ -81,13 +81,73 @@
             <%= f.label :zip, class: 'label font-semibold leading-none' %>
             <%= f.text_field :zip, class: 'textfield leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200' %>    
           </div>
-          <div class="w-full md:w-1/2 flex flex-col  md:mt-0 mt-4">
+        
+        <div class="md:flex items-center mt-12 justify-between">
+          <div class="w-full md:w-1/2 flex flex-col md:ml-6 md:mt-0 mt-4" data-controller="tomselect">
             <%= f.label :region, class: 'label font-semibold leading-none' %>
-            <%= f.text_field :region, class: 'textfield leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200' %>    
+            <%= f.select :region, options_for_select([
+                                    ['Alava','Alava'],
+                                    ['Albacete','Albacete'],
+                                    ['Alicante', 'Alicante'],
+                                    ['Almería', 'Almería'],
+                                    ['Asturias', 'Asturias'],
+                                    ['Avila','Avila'],
+                                    ['Badajoz', 'Badajoz'],
+                                    ['Barcelona', 'Barcelona'],
+                                    ['Burgos', 'Burgos'],
+                                    ['Cáceres','Cáceres'],
+                                    ['Cádiz', 'Cádiz'],
+                                    ['Cantabria', 'Cantabria'],
+                                    ['Castellón', 'Castellón'],
+                                    ['Ciudad Real', 'Ciudad Real'],
+                                    ['Córdoba', 'Córdoba'],
+                                    ['La Coruña', 'La Coruña'],
+                                    ['Cuenca', 'Cuenca'],
+                                    ['Gerona', 'Gerona'],
+                                    ['Granada', 'Granada'],
+                                    ['Guadalajara', 'Guadalajara'],    
+                                    ['Guipúzcoa', 'Guipúzcoa'],
+                                    ['Huelva', 'Huelva'],
+                                    ['Huesca', 'Huesca'],
+                                    ['Islas Baleares', 'Islas Baleares'],
+                                    ['Jaén', 'Jaén'],
+                                    ['León', 'León'],
+                                    ['Lérida', 'Lérida'],
+                                    ['Lugo', 'Lugo'],
+                                    ['Madrid', 'Madrid'],
+                                    ['Málaga', 'Málaga'],
+                                    ['Murcia', 'Murcia'],
+                                    ['Navarra', 'Navarra'],
+                                    ['Orense', 'Orense'],
+                                    ['Palencia', 'Palencia'],
+                                    ['Las Palmas', 'Las Palmas'],
+                                    ['Pontevedra', 'Pontevedra'],
+                                    ['La Rioja', 'La Rioja'],
+                                    ['Salamanca', 'Salamanca'],
+                                    ['Segovia', 'Segovia'],
+                                    ['Sevilla', 'Sevilla'],
+                                    ['Soria', 'Soria'],
+                                    ['Tarragona', 'Soria'],
+                                    ['Santa Cruz de Tenerife', 'Santa Cruz de Tenerife'],
+                                    ['Teruel', 'Teruel'],
+                                    ['Toledo', 'Toledo'],
+                                    ['Valencia', 'Valencia'],
+                                    ['Valladolid', 'Valladolid'],
+                                    ['Vizcaya', 'Vizcaya'],
+                                    ['Zamora', 'Zamora'],
+                                    ['Zaragoza', 'Zaragoza']
+                                  ]),
+            { include_blank: "All" },
+            {prompt: 'Selecciona region', class: 'textfield leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200',
+            data: { tomselect_target: 'countriesField' } } %>    
           </div>
-          <div class="w-full md:w-1/2 flex flex-col  md:mt-0 mt-4">
+
+          <div class="w-full md:w-1/2 flex flex-col md:ml-6 md:mt-0 mt-4" data-controller="tomselect">
             <%= f.label :country, class: 'label font-semibold leading-none' %>
-            <%= f.text_field :country, class: 'textfield leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200' %>    
+            <%= f.select :country, options_for_select([['españa','ESPAÑA'],['portugal','PORTUGAL'],['austria','AUSTRIA']]),
+            { include_blank: "All" },
+            {prompt: 'Selecciona país', class: 'textfield leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200',
+            data: { tomselect_target: 'countriesField' } } %>    
           </div>
         </div>
         <div class="flex items-center justify-center w-full">
