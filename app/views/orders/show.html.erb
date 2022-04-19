@@ -1,26 +1,38 @@
 <section class="w-4/5 min-h-screen">
-  <div class="flex justify-between">
-    <div class="w-full block p-6 rounded-lg shadow-lg bg-white"> 
-      <h2>User data</h2>
+  <div class="flex flex-col md:flex-row justify-center md:justify-between">
+    <div class="w-full md:w-2/5 block p-6 rounded-lg shadow-lg bg-white"> 
+      <div class="w-full text-lg font-semibold"> Datos usuario: </div> 
       <div class="form-group mb-6">
-        <div class="label">Nombre</div>
-        <div class= 'textfield text-2xl', readonly: true><%=  @user.name %></div>
-        <div class= 'textfield text-2xl', readonly: true><%=  @user.last_name %></div>
+        <div class= 'text-gray-900 px-3 py-1 mt-4 border-b rounded border-b-indigo-200'>Nombre: <%= @user.name %></div>
+        <div class= 'text-gray-900 px-3 py-1 mt-4 border-b rounded border-b-indigo-200'>Apellidos: <%=  @user.last_name %></div>
+        <div class= 'text-gray-900 px-3 py-1 mt-4 border-b rounded border-b-indigo-200'>Fecha nacimiento: <%=  @user.birthdate.strftime('%d-%m-%Y') %></div>
+        <div class= 'text-gray-900 px-3 py-1 mt-4 border-b rounded border-b-indigo-200'>Email: <%=  @user.email %></div>
+        <div class= 'text-gray-900 px-3 py-1 mt-4 border-b rounded border-b-indigo-200'>DNI: <%=  @user.dni %></div>
+        <div class= 'text-gray-900 px-3 py-1 mt-4 border-b rounded border-b-indigo-200'>Tlf: <%=  @user.phone %></div>
+        <div class= 'text-gray-900 px-3 py-1 mt-4 border-b rounded border-b-indigo-200'>Dirección: <%=  @user.address %>, <%= @user.zip %> <%= @user.region.upcase %> </div>
       </div>
     </div>
-    <div class="w-full block p-6 rounded-lg shadow-lg bg-white"> 
+    <div class="w-full md:w-3/5 block p-6 rounded-lg shadow-lg bg-white"> 
       <%= link_to 'Confirmar pedido', charged_order_path(@order), class: 'button-primary' if current_user.admin? && !@order.charge %>
-      <h2 class="<%= @order.charge ? 'bg-green-500 text-white' : 'bg-white' %>">Order data</h2>
-      <%= @order.id %> <br>
-      <%= @order.product_name %>
-      <br>
-      Files 
-      <div class="flex justify-between">
+      <div class="w-full text-lg font-semibold flex justify-between"> Datos inscripción <span><%= @order.charge? ? inline_svg_tag('icons/ico-badge-check.svg', class:'w-8 h-8', style: 'color:green;') : ''%></span> </div> 
+      <div class= 'text-gray-900 px-3 py-1 mt-4 border-b rounded border-b-indigo-200'>Tipo: <%=  @order.category_name %></div>
+      <div class= 'text-gray-900 px-3 py-1 mt-4 border-b rounded border-b-indigo-200'>Producto: <%=  @order.product_name %></div>
+      <div class= 'text-gray-900 px-3 py-1 mt-4 border-b rounded border-b-indigo-200'>Dirección: <%=  @order.address %>, <%= @order.zip %> <%= @order.region.upcase %> </div>
+      <div class="w-full text-lg font-semibold mt-4"> Files </div> 
+      <div class="flex justify-between mb-4">
         <div class="w-full sm:w-1/2">dni_front <br>
-          <%= @order.dni_front.present? ? image_tag(url_for(@order.dni_front)) : 'Aun se han subido archivos'%>
+          <%= @order.dni_front.present? ? image_tag(url_for(@order.dni_front)) : 'Aun no se han subido archivos'%>
         </div>
         <div class="w-full sm:w-1/2">dni_back <br>
-          <%= @order.dni_back.present? ? image_tag(url_for(@order.dni_back)) : 'Aun se han subido archivos' %>
+          <%= @order.dni_back.present? ? image_tag(url_for(@order.dni_back)) : 'Aun no se han subido archivos' %>
+        </div>
+      </div>
+      <div class="flex justify-between mb-4">
+        <div class="w-full sm:w-1/2">dni_front <br>
+          <%= @order.medical_card.present? ? image_tag(url_for(@order.medical_card)) : 'Aun no se han subido archivos'%>
+        </div>
+        <div class="w-full sm:w-1/2">dni_back <br>
+          <%= @order.billing_payment.present? ? image_tag(url_for(@order.billing_payment)) : 'Aun no se han subido archivos' %>
         </div>
       </div>
     </div>
